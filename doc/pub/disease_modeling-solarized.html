@@ -149,7 +149,7 @@ end of tocinfo -->
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
   TeX: {
-     equationNumbers: {  autoNumber: "none"  },
+     equationNumbers: {  autoNumber: "AMS"  },
      extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
   }
 });
@@ -161,14 +161,6 @@ MathJax.Hub.Config({
 
 
     
-<a name="part0000"></a>
-<p>
-<!-- begin top navigation -->
-<div style="text-align: right;"><a href="._disease_modeling-solarized.html001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
-<!-- end top navigation -->
-</p>
-
-<p>
 <!-- ------------------- main content ---------------------- -->
 
 
@@ -195,11 +187,731 @@ MathJax.Hub.Config({
 <center><p><img src="fig/disease1.jpg" align="bottom" width=400></p></center>
 
 <p>
+<!-- !split -->
+
+<h2>A very complex phenomenon is modeled by simple math....  <a name="___sec0"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Assumptions:</b>
+
+<ul>
+ <li> We have a perfectly mixed population in a confined area</li>
+ <li> We do not consider spatial movements, just how the disease
+   evolves in time</li>
+ <li> We do not consider individuals, just a grand mix of them<br />
+   (cf. statistical mechanics vs thermodynamics)</li>
+</ul>
+</div>
+
+
 <p>
-<!-- begin bottom navigation -->
-<div style="text-align: right;"><a href="._disease_modeling-solarized.html001.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
-<!-- end bottom navigation -->
-</p>
+<!-- !bpop -->
+We consider very simple models, but these can be extended to full
+models that are used world-wide by health authorities. Typical
+diseases: flu, measles, swine flu, HIV, ...
+<!-- !epop -->
+
+<p>
+<!-- !split -->
+
+<h2>We keep track of 3 categories  <a name="___sec1"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Categories (SIR model):</b>
+
+<ul>
+ <li> <b>S</b>: susceptibles - who can get the disease</li>
+ <li> <b>I</b>: infected - who have developed the disease and infect susceptibles</li>
+ <li> <b>R</b>: recovered - who have recovered and become immune</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>Mathematical quantities:</b>
+\( S(t) \), \( I(t) \), \( R(t) \) (no of people).
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>Goal:</b>
+Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
+</div>
+
+
+<p>
+<!-- !split -->
+
+<h2>\( \Delta t\,\beta SI \) people move from S to I in a time inverval \( \Delta t \)  <a name="___sec2"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>S-I interaction:</b>
+
+<ul>
+  <li> In a mix of S and I people, there are \( SI \) possible pairs</li>
+  <li> A certain fraction \( \Delta t\,\beta \) of \( SI \) meet in a (small)
+    time interval \( \Delta t \), with the result that the infected
+    &quot;successfully&quot; infects the susceptible</li>
+  <li> The loss \( \Delta t\,\beta SI \) in the S catogory is a corresponding
+    gain in the I category</li>
+</ul>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-small"><b>Remark.</b>
+It is reasonable that the fraction depends on \( \Delta t \)
+(twice as many infected in \( 2\Delta t \) as in \( \Delta t \)).
+\( \beta \) is some unknown parameter we must measure, supposed to not
+depend on \( \Delta t \), but maybe time \( t \).
+</div>
+
+
+<p>
+<!-- !split -->
+
+<h2>For practical calculations, we must express the S-I interaction with symbols  <a name="___sec3"></a></h2>
+
+Loss in \( S(t) \):
+
+$$ S(t+\Delta t) = S(t) - \Delta t\,\beta S(t)I(t)$$
+
+
+<p>
+Gain in \( I(t) \):
+
+$$ I(t+\Delta t) = I(t) + \Delta t\,\beta S(t)I(t)$$
+
+
+<p>
+<!-- !split -->
+
+<h2>Modeling the interaction between R and I  <a name="___sec4"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>R-I interaction:</b>
+
+<ul>
+ <li> After some days, the infected has recovered and moves to the R category</li>
+ <li> A simple model: in a small time \( \Delta t \) (say 1 day),
+   a fraction \( \Delta t\,\nu \) of the infected are removed
+   (\( \nu \) must be measured)</li>
+</ul>
+</div>
+
+
+<p>
+We must subtract this fraction in the balance equation for \( I \):
+
+$$ I(t+\Delta t) = I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\,\nu I(t) $$
+
+
+<p>
+The loss \( \Delta t\,\nu I \) is a gain in \( R \):
+
+$$ R(t+\Delta t) = R(t) + \Delta t\,\nu R(t)$$
+
+
+<p>
+<!-- !split -->
+
+<h2>We have three equations for \( S \), \( I \), and \( R \)  <a name="___sec5"></a></h2>
+
+$$
+\begin{align}
+S(t+\Delta t) &= S(t) - \Delta t\,\beta S(t)I(t)
+\label{SIR1:S}\\
+I(t+\Delta t) &= I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\nu I(t)
+\label{SIR1:I}\\
+R(t+\Delta t) &= R(t) + \Delta t\,\nu R(t)
+\label{SIR1:R}
+\end{align}
+$$
+
+
+<p>
+<center><p><img src="fig/categories_SIR.png" align="bottom" width=400></p></center>
+
+<p>
+Before we can compute with these, we must
+
+<ul>
+ <li> know \( \beta \) and \( \nu \)</li>
+ <li> know \( S(0) \) (many), \( I(0) \) (few), \( R(0) \) (0?)</li>
+ <li> choose \( \Delta t \)</li>
+</ul>
+
+<!-- !split -->
+
+<h2>The computation involves just simple arithmetics  <a name="___sec6"></a></h2>
+
+<ul>
+ <li> Set \( \Delta t=6 \) minutes</li>
+ <li> Set \( \beta =0.0013 \), \( \nu =0.8333 \)</li>
+ <li> Set \( S(0)=50 \), \( I(1) \), \( R(0)=0 \)</li>
+</ul>
+
+$$
+\begin{align*}
+S(\Delta t) &= S(0) - \Delta t\,\beta S(0)I(0)\approx 49.99\\
+I(\Delta t) &= I(0) + \Delta t\,\beta S(0)I(0) -\Delta t\,\nu I(0)\approx 1.002\\
+R(\Delta t) &= R(0) + \Delta t\,\nu R(0)\approx 0.0008333
+\end{align*}
+$$
+
+
+<p>
+<!-- !bpop -->
+
+<ul>
+ <li> In reality, \( S \), \( I \), \( R \) are integers and events are discrete (meet, get sick)</li>
+ <li> In the model, we work with real numbers and continuous events</li>
+ <li> Reasonable approximation in a not too small population</li>
+</ul>
+
+<!-- !epop -->
+
+<p>
+<!-- !split -->
+
+<h2>And we can continue...  <a name="___sec7"></a></h2>
+
+$$
+\begin{align*}
+S(2\Delta t) &= S(\Delta t) - \Delta t\,\beta S(\Delta t)I(\Delta t)\approx 49.87\\
+I(2\Delta t) &= I(\Delta t) + \Delta t\,\beta S(\Delta t)I(\Delta t) -\Delta t\,\nu I(\Delta t)\approx 1.011\\
+R(2\Delta t) &= R(\Delta t) + \Delta t\,\nu R(\Delta t)\approx 0.00167
+\end{align*}
+$$
+
+
+<p>
+Repeat...
+
+$$
+\begin{align*}
+S(3\Delta t) &= S(2\Delta t) - \Delta t\,\beta S(2\Delta t)I(2\Delta t)\approx 49.98\\
+I(3\Delta t) &= I(2\Delta t) + \Delta t\,\beta S(2\Delta t)I(2\Delta t) -\Delta t\,\nu I(2\Delta t)\approx 1.017\\
+R(3\Delta t) &= R(2\Delta t) + \Delta t\,\nu R(2\Delta t)\approx 0.0025
+\end{align*}
+$$
+
+
+<p>
+<!-- !bpop -->
+But this is getting boring! Let's ask a computer to do the work!
+<!-- !epop -->
+
+<p>
+<!-- !split -->
+
+<h2>First, some handy notation  <a name="___sec8"></a></h2>
+
+\( S^n = S(n\Delta t) \),
+\( I^n = I(n\Delta t) \), \( R^n = R(n\Delta t) \).
+
+<p>
+The equations can now be written as
+
+$$
+\begin{align}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n
+\label{SIR1:Sc}\\
+I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
+\label{SIR1:Ic}\\
+R^{n+1} &= R^n + \Delta t\,\nu R^n
+\label{SIR1:Rc}
+\end{align}
+$$
+
+
+<p>
+<!-- !split -->
+
+<h2>We variables, arrays, and a loop we can program  <a name="___sec9"></a></h2>
+
+Suppose we want to compute until \( t=N\Delta t \), i.e., for \( n=0,1,\ldots,N-1 \).
+We can store \( S^0, S^1, S^2, \ldots, S^N \) in an array (or list).
+
+<p>
+Python (Matlab):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">t = linspace(<span style="color: #B452CD">0</span>, N*dt, N+<span style="color: #B452CD">1</span>)  <span style="color: #228B22"># all time points</span>
+S = zeros(N+<span style="color: #B452CD">1</span>)
+I = zeros(N+<span style="color: #B452CD">1</span>)
+R = zeros(N+<span style="color: #B452CD">1</span>)
+
+<span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(N):
+    S[n+<span style="color: #B452CD">1</span>] = S[n] - dt*beta*S[n]*I[n]
+    I[n+<span style="color: #B452CD">1</span>] = I[n] + dt*beta*S[n]*I[n] - dt*nu*I[n]
+    R[n+<span style="color: #B452CD">1</span>] = R[n] + dt*nu*I[n]
+</pre></div>
+<p>
+<!-- !split -->
+
+<h2>Here is the complete program  <a name="___sec10"></a></h2>
+
+Let time be measured in hours.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">beta = <span style="color: #B452CD">0.0013</span>
+nu =<span style="color: #B452CD">0.8333</span>
+dt = <span style="color: #B452CD">0.1</span>             <span style="color: #228B22"># 6 min</span>
+D = <span style="color: #B452CD">30</span>               <span style="color: #228B22"># simulate for D days</span>
+N = <span style="color: #658b00">int</span>(D*<span style="color: #B452CD">24</span>/dt)     <span style="color: #228B22"># corresponding no of hours</span>
+
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">numpy</span> <span style="color: #8B008B; font-weight: bold">import</span> zeros, linspace
+t = linspace(<span style="color: #B452CD">0</span>, N*dt, N+<span style="color: #B452CD">1</span>)
+S = zeros(N+<span style="color: #B452CD">1</span>)
+I = zeros(N+<span style="color: #B452CD">1</span>)
+R = zeros(N+<span style="color: #B452CD">1</span>)
+
+<span style="color: #8B008B; font-weight: bold">for</span> n <span style="color: #8B008B">in</span> <span style="color: #658b00">range</span>(N):
+    S[n+<span style="color: #B452CD">1</span>] = S[n] - dt*beta*S[n]*I[n]
+    I[n+<span style="color: #B452CD">1</span>] = I[n] + dt*beta*S[n]*I[n] - dt*nu*I[n]
+    R[n+<span style="color: #B452CD">1</span>] = R[n] + dt*nu*I[n]
+
+<span style="color: #228B22"># Plot the graphs</span>
+<span style="color: #8B008B; font-weight: bold">from</span> <span style="color: #008b45; text-decoration: underline">matplotlib.pyplot</span> <span style="color: #8B008B; font-weight: bold">import</span> *
+plot(t, S, <span style="color: #CD5555">&#39;k-&#39;</span>, t, I, <span style="color: #CD5555">&#39;b-&#39;</span>, t, R, <span style="color: #CD5555">&#39;r-&#39;</span>)
+legend([<span style="color: #CD5555">&#39;S&#39;</span>, <span style="color: #CD5555">&#39;I&#39;</span>, <span style="color: #CD5555">&#39;R&#39;</span>], loc=<span style="color: #CD5555">&#39;lower right&#39;</span>)
+xlabel(<span style="color: #CD5555">&#39;hours&#39;</span>)
+show()
+</pre></div>
+<p>
+<!-- !split -->
+
+<h2>We have predicted a disease!  <a name="___sec11"></a></h2>
+
+<center><p><img src="fig/SIR1.png" align="bottom" width=800></p></center>
+
+<p>
+<!-- !split -->
+
+<h2>How much math and programming did we use?  <a name="___sec12"></a></h2>
+
+<ul>
+ <li> Plain arithmetics</li>
+ <li> The concept of a graph (i.e., discrete function in time)</li>
+ <li> Units</li>
+ <li> Variable</li>
+ <li> Array</li>
+ <li> Loop</li>
+ <li> Plotting</li>
+</ul>
+
+<!-- !split -->
+
+<h2>Detour: The standard mathematical approach  <a name="___sec13"></a></h2>
+
+We had from intuition established
+
+$$
+\begin{align*}
+S(t+\Delta t) &= S(t) - \Delta t\,\beta S(t)I(t)\\
+I(t+\Delta t) &= I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\,\nu I(t)\\
+R(t+\Delta t) &= R(t) + \Delta t\,\nu R(t)
+\end{align*}
+$$
+
+
+<p>
+The mathematician will now make a <em>differential equations</em>. First,
+divide by \( \Delta t \) and move \( S \), \( I \), and \( R \) to the left-hand side:
+
+$$
+\begin{align*}
+\frac{S(t+\Delta t) - S(t)}{\Delta t} &= - \beta S(t)I(t)\\
+\frac{I(t+\Delta t) - I(t)}{\Delta t} &= \beta t S(t)I(t) -\nu I(t)\\
+\frac{R(t+\Delta t) - R(t)}{\Delta t} &= \nu R(t)
+\end{align*}
+$$
+
+
+<p>
+<!-- !split -->
+
+<h2>A derivative arises as \( \Delta t\rightarrow 0 \)  <a name="___sec14"></a></h2>
+
+In any calculus book, the derivative of \( S \) at \( t \) is defined as
+
+$$ S'(t) = \lim_{t\rightarrow 0}\frac{S(t+\Delta t) - S(t)}{\Delta t}$$
+
+
+<p>
+If we let \( \Delta t\rightarrow 0 \), we get derivatives on the left-hand side:
+
+$$
+\begin{align*}
+S'(t) &= - \beta S(t)I(t)\\
+I'(t) &= \beta t S(t)I(t) -\nu I(t)\\
+R'(t) &= \nu R(t)
+\end{align*}
+$$
+
+
+<p>
+This is a 3x3 system of differential equations for the functions
+\( S(t) \), \( I(t) \), \( R(t) \). For a unique solution, we need
+\( S(0) \), \( I(0) \), \( R(0) \).
+
+<p>
+<!-- !split -->
+
+<h2>Bad news: we cannot solve these equations!  <a name="___sec15"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Time to ask a numerical methods expert:</b>
+Replace the derivative with a <em>finite difference</em>, e.g.,
+
+$$ S'(t) \approx \frac{S(t+\Delta t) - S(t)}{\Delta t}$$
+
+which is accurate for small \( \Delta t \).
+</div>
+
+
+<p>
+This brings us back to the first model, which we can solve
+on a computer!
+
+<p>
+<!-- !split -->
+
+<h2>Parameter estimation is needed for predictive modeling  <a name="___sec16"></a></h2>
+
+<ul>
+ <li> Any small \( \Delta t \) will do</li>
+ <li> One can reason about \( \nu \) and say that \( 1/\nu \) is the mean
+   recovery time for the disease (e.g., 1 week for a flu)</li>
+ <li> \( \beta \) must in some way be measured, but we don't know what it means...</li>
+</ul>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>So, what if we don't know \( \beta \)?</b>
+
+<ul>
+ <li> Can still learn about the <em>dynamics</em> of diseases</li>
+ <li> Can find the sensitivity to and influence of \( \beta \)</li>
+ <li> Can apply <em>parameter estimation</em> procedures to fit \( \beta \) to data</li>
+</ul>
+</div>
+
+
+<p>
+<!-- !split -->
+
+<h2>Let us extend the model: no life-long immunity  <a name="___sec17"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Assumption.</b>
+After some time, people in the R category lose the immunity.
+In a small time \( \Delta t \) this gives a leakage \( \Delta t\,\gamma R \)
+to the S category. (\( 1/\gamma \) is the mean time for immunity.)
+</div>
+
+
+<p>
+<center><p><img src="fig/categories_SIR_feedback.png" align="bottom" width=400></p></center>
+
+$$
+\begin{align}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \color{red}{\Delta t\,\gamma R^n}
+\label{SIR2:S}\\
+I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
+\label{SIR2:I}\\
+R^{n+1} &= R^n + \Delta t\,\nu R^n - \color{red}{\Delta t\,\gamma R^n}
+\label{SIR2:R}
+\end{align}
+$$
+
+
+<p>
+No complications in the computational model!
+
+<p>
+<!-- !split -->
+
+<h2>The effect of loss of immunity  <a name="___sec18"></a></h2>
+
+\( 1/\gamma = 50 \) days. \( \beta \) reduced by 2 and 4:
+
+<p>
+<center><p><img src="fig/SIR2.png" align="bottom" width=950></p></center>
+
+<p>
+<!-- !split -->
+
+<h2>What is the effect of vaccination?  <a name="___sec19"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Assumptions.</b>
+A fraction \( p \) of the S category, per time unit, is vaccinated with
+success. Then in time \( \Delta t \), \( p\Delta t S \) will move to a
+vaccinated category, V. This does not affect the I and R categories.
+</div>
+
+
+<p>
+<center><p><img src="fig/categories_SIRV.png" align="bottom" width=400></p></center>
+
+$$
+\begin{align}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \Delta t\,\gamma R^n - \color{red}{p\Delta t S^n}
+\label{SIR3:S}\\
+V^{n+1} &= V^n + \color{red}{p\Delta t S^n}
+\label{SIR3:V}\\
+I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
+\label{SIR3:I}\\
+R^{n+1} &= R^n + \Delta t\,\nu R^n - \Delta t\,\gamma R^n
+\label{SIR3:R}
+\end{align}
+$$
+
+
+<p>
+Implementation: Just add array for \( V^n \) and add equation.
+
+<p>
+<!-- !split -->
+
+<h2>Many possibilities for adjusting the model...  <a name="___sec20"></a></h2>
+
+The effect of vaccination decreases, so we may move people back to
+the S category (term proportional to \( \Delta t V \)).
+
+<p>
+<center><p><img src="fig/categories_SIRV_feedback.png" align="bottom" width=400></p></center>
+
+<p>
+<!-- !split -->
+
+<h2>Effect of adding vaccination  <a name="___sec21"></a></h2>
+
+<center><p><img src="fig/SIRV1.png" align="bottom" width=800></p></center>
+
+<p>
+(\( p=0.005 \))
+
+<p>
+<!-- !split -->
+
+<h2>What is the effect of an intensive vaccination campaign?  <a name="___sec22"></a></h2>
+
+10 times more intense vaccination for 10 days, 6 days after outbreak:
+
+$$
+\begin{equation*} p(t) = \left\lbrace\begin{array}{ll}
+0.05,& 6\leq t\leq 15,\\
+0,& \hbox{otherwise} \end{array}\right.\end{equation*}
+$$
+
+
+<p>
+Implementation: Let \( p^n \) be an array as \( V^n \). Set \( p^n=0.05 \) for
+\( n=6\cdot 24/0.1,\ldots, 15\cdot 24/0.1 \) (\( \mbox{days}\cdot 24 \mbox{h per
+day}\Delta t \)).
+
+<p>
+<!-- !split -->
+
+<h2>Effect of vaccination campaign  <a name="___sec23"></a></h2>
+
+<center><p><img src="fig/SIRV2.png" align="bottom" width=800></p></center>
+
+<p>
+Could now let the computer run a lot of cases and find the optimal
+vaccination period.
+
+<p>
+<!-- !split -->
+
+<h2>We can experiment with other campaigns  <a name="___sec24"></a></h2>
+
+<!-- !bslidecell 00 0.3 -->
+<center><p><img src="fig/disease2.jpg" align="bottom" width=400></p></center>
+<!-- !eslidecell -->
+
+<p>
+<!-- !bslidecell 01 0.7 -->
+Masks lower \( \beta \):
+
+$$
+\begin{equation*} \beta(t) = \left\lbrace\begin{array}{ll}
+\beta_1,& 0\leq t < 5,\\
+\beta_2 < \beta_1,& t \geq 5\end{array}\right.
+\end{equation*}
+$$
+
+
+<p>
+Very easy to implement. (Used to be complicated in differential
+equation models...)
+<!-- !eslidecell -->
+
+<p>
+<!-- !split -->
+
+<h2>And now for something similar: zombification  <a name="___sec25"></a></h2>
+
+<center><p><img src="fig/zombie1.jpg" align="bottom" width=900></p></center>
+
+<p>
+<b>Zombification</b>: The disease that turns you into a zombie.
+
+<p>
+<!-- !split -->
+
+<h2>Zombie modeling is almost the same as SIR modeling  <a name="___sec26"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Categories.</b>
+
+<ol>
+ <li> S: susceptible humans who can become zombies</li>
+ <li> I: infected humans, being bitten by zombies</li>
+ <li> Z: zombies</li>
+ <li> R: removed individuals, either conquered zombies or dead humans</li>
+</ol>
+</div>
+
+
+<p>
+Mathematical quantities: \( S(t) \), \( I(t) \), \( Z(t) \), \( R(t) \)
+
+<p>
+Zombie movie: <em>The Night of the Living Dead</em>, Geoerge A. Romero, 1968
+
+<p>
+<!-- !split -->
+
+<h2>Dynamics of the zombie SIZR model  <a name="___sec27"></a></h2>
+
+<center><p><img src="fig/categories_SIZR.png" align="bottom" width=380></p></center>
+
+<p>
+<!-- !bpop -->
+
+<ol>
+ <li> Susceptibles are infected by zombies: \( -\Delta t\beta SZ \) in time \( \Delta t \) (cf. the \( \Delta t\,\beta SI \) term in the SIR model).</li>
+ <li> Susceptibles die naturally or get killed and then enter the removed category. The no of deaths in time \( \Delta t \) is \( \Delta t\delta_S S \).</li>
+ <li> We also allow new humans to enter the area with zombies (necessary in a war on zombies): \( \Delta t\Sigma \) during a time \( \Delta t \).</li>
+ <li> Some infected turn into zombies (Z): \( \Delta t\rho I \), while others die (R): \( \delta_I\Delta t I \).</li>
+ <li> Nobody from R can turn into Z (important - otherwise zombies win).</li>
+ <li> Killed zombies go to R: \( \Delta t\alpha SZ \).</li>
+</ol>
+
+<!-- !epop -->
+
+<p>
+<!-- !split -->
+
+<h2>The four equations in the SIZR model for zombification  <a name="___sec28"></a></h2>
+
+$$
+\begin{align*}
+S^{n+1} &= S^n + \Delta t\,\Sigma - \Delta t\,\beta S^nZ - \Delta t\,\delta_S S^n\\
+I^{n+1} &= I^n + \Delta t\,\beta S^nZ^n - \Delta t\,\rho I^n - \Delta t\,\delta_I I^n\\
+Z^{n+1} &= Z^n + \Delta t\,\rho I^n - \Delta t\,\alpha S^nZ^n\\
+R^{n+1} &= R^n + \Delta t\,\delta_S S^n  + \Delta t\,\delta_I I^n +
+\Delta t\,\alpha S^nZ^n
+\end{align*}
+$$
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-small"><b>Interpretation of parameters:</b>
+
+<ul>
+  <li> \( \Sigma \): no of new humans brought into the zombified area per unit time.</li>
+  <li> \( \beta \): the probability that a theoretically possible human-zombie pair actually meets physically, during a unit time interval, with the result that the human is infected.</li>
+  <li> \( \delta_S \): the probability that a susceptible human is killed or dies, in a unit time interval.</li>
+  <li> \( \delta_I \): the probability that an infected human is killed or dies, in a unit time interval.</li>
+  <li> \( \rho \): the probability that an infected human is turned into a zombie, during a unit time interval.</li>
+  <li> \( \alpha \): the probability that, during a unit time interval, a theoretically possible human-zombie pair fights and the human kills the zombie.</li>
+</ul>
+</div>
+
+
+<p>
+<!-- !split -->
+
+<h2>Simulate a zombie movie!  <a name="___sec29"></a></h2>
+
+<!-- !bslidecell 00 0.5 -->
+<div class="alert alert-block alert-block alert-text-normal"><b>Three fundamental phases.</b>
+
+<ol>
+<li> The initial phase (4 h)</li>
+<li> The hysteric phase (24 h)</li>
+<li> The counter attack phase (5 h)</li>
+</ol>
+</div>
+
+<!-- !eslidecell -->
+
+<p>
+<!-- !bslidecell 01 0.5 -->
+<center><p><img src="fig/TNotLD.png" align="bottom" width=300></p></center>
+<!-- !eslidecell -->
+
+<p>
+<!-- !bpop -->
+How do we do this? As \( p \) in the vaccination campaign - the parameters
+take on different constant values in different time intervals.
+<!-- !epop -->
+
+<p>
+<!-- !bpop -->
+H. P. Langtangen and K.-A. Mardal and P. Røtnes:
+Escaping the Zombie Threat by Mathematics, in
+A. Whelan et al.: <em>Zombies in the Academy - Living Death in Higher Education</em>,
+University of Chicago Press, 2013
+<!-- !epop -->
+
+<p>
+<!-- !split -->
+
+<h2>Effective war on zombies  <a name="___sec30"></a></h2>
+
+Introduce attacks on zombies at selected times \( T_0, T_1, \ldots, T_m \).
+
+<p>
+Model: Replace \( \alpha \) by
+
+$$ \alpha_0 + \omega (t),$$
+
+where \( \alpha_0 \) is constant and \( \omega(t) \) is a series of
+Gaussian functions (peaks) in time:
+
+$$ \omega(t) = a\sum_{i=0}^m \exp{\left(-\frac{1}{2}\left({t - T_i\over\sigma}\right)\right)}
+$$
+
+
+<p>
+Must experiment with values of \( a \) (strength), \( \sigma \) (duration is \( 6\sigma \)),
+point of attacks (\( T_i \))
+
+<p>
+<!-- !split -->
+
+<h2>Summary  <a name="___sec31"></a></h2>
+
+<ul>
+ <li> A complex spreading of diseases can be modeled by intuitive, simple
+   accounting of movement between categories</li>
+ <li> Such models are knowns as <em>compartment models</em></li>
+ <li> Result: difference equations that are easy to simulate on a computer</li>
+ <li> (Can let \( \Delta t\rightarrow 0 \) and get differential equations)</li>
+ <li> Easy to add new effects (vaccination, campaigns, zombification)</li>
+</ul>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>All these slides and associated programs are available.</b>
+Site: <a href="https://github.com/hplgit/disease-modeling" target="_blank"><tt>https://github.com/hplgit/disease-modeling</tt></a>. Just do
+
+<p>
+
+<!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
+<div class="highlight" style="background: #eee8d5"><pre style="line-height: 125%">Terminal&gt; git clone https://github.com/hplgit/disease-modeling.git
+</pre></div>
+<p>
+</div>
+
 
 <!-- ------------------- end of main content --------------- -->
 

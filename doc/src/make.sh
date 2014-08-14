@@ -43,7 +43,7 @@ system doconce slides_html $html deck --html_slide_theme=sandstone.default
 # Plain HTML documents
 html=${name}-solarized
 system doconce format html $name --pygments_html_style=perldoc --html_style=solarized3 --html_links_in_new_window --html_output=$html $opt
-system doconce slides_html $html doconce
+#system doconce slides_html $html doconce
 
 # Publish
 cp -r *.html .*.html *.pdf *.js fig ../pub

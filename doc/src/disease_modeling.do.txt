@@ -51,7 +51,8 @@ Find and solve equations for $S(t)$, $I(t)$, $R(t)$.
 !eblock
 
 !bblock (small) Remark
-It is reasonable that the fraction depends on $\Delta t$, and
+It is reasonable that the fraction depends on $\Delta t$
+(twice as many infected in $2\Delta t$ as in $\Delta t$).
 $\beta$ is some unknown parameter we must measure, supposed to not
 depend on $\Delta t$, but maybe time $t$.
 !eblock
