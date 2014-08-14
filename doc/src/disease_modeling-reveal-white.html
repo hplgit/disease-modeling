@@ -1,0 +1,1223 @@
+<!DOCTYPE html>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Mathematical Modeling of the Spreading of Diseases">
+
+
+
+
+
+
+
+
+<!-- reveal.js: http://lab.hakim.se/reveal-js/ -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<!--
+<link rel="stylesheet" href="reveal.js/css/reveal.css">
+<link rel="stylesheet" href="reveal.js/css/theme/beige.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/beigesmall.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/solarized.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/night.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/moon.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simple.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/darkgray.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/default.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/cbc.css" id="theme">
+<link rel="stylesheet" href="reveal.js/css/theme/simula.css" id="theme">
+-->
+
+<!-- For syntax highlighting -->
+<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+<script>
+document.write( '<link rel="stylesheet" href="reveal.js/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+</script>
+
+<style type="text/css">
+    hr { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    p.caption { width: 80%; font-size: 60%; font-style: italic; text-align: left; }
+    hr.figure { border: 0; width: 80%; border-bottom: 1px solid #aaa}
+    .reveal .alert-text-small   { font-size: 80%;  }
+    .reveal .alert-text-large   { font-size: 130%; }
+    .reveal .alert-text-normal  { font-size: 90%;  }
+    .reveal .alert {
+             padding:8px 35px 8px 14px; margin-bottom:18px;
+             text-shadow:0 1px 0 rgba(255,255,255,0.5);
+             border:5px solid #bababa;
+             -webkit-border-radius: 14px; -moz-border-radius: 14px;
+             border-radius:14px
+             background-position: 10px 10px;
+             background-repeat: no-repeat;
+             background-size: 38px;
+             padding-left: 30px; /* 55px; if icon */
+     }
+     .reveal .alert-block {padding-top:14px; padding-bottom:14px}
+     .reveal .alert-block > p, .alert-block > ul {margin-bottom:1em}
+     /*.reveal .alert li {margin-top: 1em}*/
+     .reveal .alert-block p+p {margin-top:5px}
+     /*.reveal .alert-notice { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_notice.png); }
+     .reveal .alert-summary  { background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_summary.png); }
+     .reveal .alert-warning { background-image: url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_warning.png); }
+     .reveal .alert-question {background-image:url(http://hplgit.github.io/doconce/bundled/html_images/small_gray_question.png); } */
+
+</style>
+
+
+
+<!-- Styles for table layout of slides -->
+<style type="text/css">
+td.padding {
+  padding-top:20px;
+  padding-bottom:20px;
+  padding-right:50px;
+  padding-left:50px;
+}
+</style>
+
+</head>
+
+<body>
+<div class="reveal">
+
+<!-- Any section element inside the <div class="slides"> container
+     is displayed as a slide -->
+
+<div class="slides">
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+
+
+
+<section>
+<!-- ------------------- main content ---------------------- -->
+
+
+<title>Mathematical Modeling of the Spreading of Diseases</title>
+
+<center><h1>Mathematical Modeling of the Spreading of Diseases</h1></center>  <!-- document title -->
+
+<p>
+<!-- author(s): Hans Petter Langtangen -->
+
+<center>
+<b>Hans Petter Langtangen</b> [1, 2]
+</center>
+
+
+<p>&nbsp;<br>
+<!-- institution(s) -->
+
+<center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
+<center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
+<p>&nbsp;<br>
+<center><h4>Aug 14, 2014</h4></center> <!-- date -->
+<p>
+<center><p><img src="fig/disease1.jpg" align="bottom" width=400></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A very complex phenomenon is modeled by simple math....  <a name="___sec0"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Assumptions:</b>
+
+<ul>
+ <p><li> We have a perfectly mixed population in a confined area</li>
+ <p><li> We do not consider spatial movements, just how the disease
+   evolves in time</li>
+ <p><li> We do not consider individuals, just a grand mix of them<br />
+   (cf. statistical mechanics vs thermodynamics)</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+<p class="fragment">
+
+We consider very simple models, but these can be extended to full
+models that are used world-wide by health authorities. Typical
+diseases: flu, measles, swine flu, HIV, ...
+
+</p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We keep track of 3 categories  <a name="___sec1"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Categories (SIR model):</b>
+
+<ul>
+ <p><li> <b>S</b>: susceptibles - who can get the disease</li>
+ <p><li> <b>I</b>: infected - who have developed the disease and infect susceptibles</li>
+ <p><li> <b>R</b>: recovered - who have recovered and become immune</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>Mathematical quantities:</b>
+\( S(t) \), \( I(t) \), \( R(t) \) (no of people).
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>Goal:</b>
+Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>\( \Delta t\,\beta SI \) people move from S to I in a time inverval \( \Delta t \)  <a name="___sec2"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>S-I interaction:</b>
+
+<ul>
+  <p><li> In a mix of S and I people, there are \( SI \) possible pairs</li>
+  <p><li> A certain fraction \( \Delta t\,\beta \) of \( SI \) meet in a (small)
+    time interval \( \Delta t \), with the result that the infected
+    &quot;successfully&quot; infects the susceptible</li>
+  <p><li> The loss \( \Delta t\,\beta SI \) in the S catogory is a corresponding
+    gain in the I category</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-small"><b>Remark.</b>
+It is reasonable that the fraction depends on \( \Delta t \), and
+\( \beta \) is some unknown parameter we must measure, supposed to not
+depend on \( \Delta t \), but maybe time \( t \).
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>For practical calculations, we must express the S-I interaction with symbols  <a name="___sec3"></a></h2>
+
+Loss in \( S(t) \):
+
+<p>&nbsp;<br>
+$$ S(t+\Delta t) = S(t) - \Delta t\,\beta S(t)I(t)$$
+<p>&nbsp;<br>
+
+
+<p>
+Gain in \( I(t) \):
+
+<p>&nbsp;<br>
+$$ I(t+\Delta t) = I(t) + \Delta t\,\beta S(t)I(t)$$
+<p>&nbsp;<br>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Modeling the interaction between R and I  <a name="___sec4"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>R-I interaction:</b>
+
+<ul>
+ <p><li> After some days, the infected has recovered and moves to the R category</li>
+ <p><li> A simple model: in a small time \( \Delta t \) (say 1 day),
+   a fraction \( \Delta t\,\nu \) of the infected are removed
+   (\( \nu \) must be measured)</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+We must subtract this fraction in the balance equation for \( I \):
+
+<p>&nbsp;<br>
+$$ I(t+\Delta t) = I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\,\nu I(t) $$
+<p>&nbsp;<br>
+
+
+<p>
+The loss \( \Delta t\,\nu I \) is a gain in \( R \):
+
+<p>&nbsp;<br>
+$$ R(t+\Delta t) = R(t) + \Delta t\,\nu R(t)$$
+<p>&nbsp;<br>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We have three equations for \( S \), \( I \), and \( R \)  <a name="___sec5"></a></h2>
+
+<p>&nbsp;<br>
+$$
+\begin{align}
+S(t+\Delta t) &= S(t) - \Delta t\,\beta S(t)I(t)
+\tag{1}\\
+I(t+\Delta t) &= I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\nu I(t)
+\tag{2}\\
+R(t+\Delta t) &= R(t) + \Delta t\,\nu R(t)
+\tag{3}
+\end{align}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+<center><p><img src="fig/categories_SIR.png" align="bottom" width=400></p></center>
+
+<p>
+Before we can compute with these, we must
+
+<ul>
+ <p><li> know \( \beta \) and \( \nu \)</li>
+ <p><li> know \( S(0) \) (many), \( I(0) \) (few), \( R(0) \) (0?)</li>
+ <p><li> choose \( \Delta t \)</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>The computation involves just simple arithmetics  <a name="___sec6"></a></h2>
+
+<ul>
+ <p><li> Set \( \Delta t=6 \) minutes</li>
+ <p><li> Set \( \beta =0.0013 \), \( \nu =0.8333 \)</li>
+ <p><li> Set \( S(0)=50 \), \( I(1) \), \( R(0)=0 \)</li>
+</ul>
+<p>
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+S(\Delta t) &= S(0) - \Delta t\,\beta S(0)I(0)\approx 49.99\\
+I(\Delta t) &= I(0) + \Delta t\,\beta S(0)I(0) -\Delta t\,\nu I(0)\approx 1.002\\
+R(\Delta t) &= R(0) + \Delta t\,\nu R(0)\approx 0.0008333
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+
+
+<ul>
+ <p><li class="fragment"> In reality, \( S \), \( I \), \( R \) are integers and events are discrete (meet, get sick)</li>
+ <p><li class="fragment"> In the model, we work with real numbers and continuous events</li>
+ <p><li class="fragment"> Reasonable approximation in a not too small population</li>
+</ul>
+<p>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>And we can continue...  <a name="___sec7"></a></h2>
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+S(2\Delta t) &= S(\Delta t) - \Delta t\,\beta S(\Delta t)I(\Delta t)\approx 49.87\\
+I(2\Delta t) &= I(\Delta t) + \Delta t\,\beta S(\Delta t)I(\Delta t) -\Delta t\,\nu I(\Delta t)\approx 1.011\\
+R(2\Delta t) &= R(\Delta t) + \Delta t\,\nu R(\Delta t)\approx 0.00167
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Repeat...
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+S(3\Delta t) &= S(2\Delta t) - \Delta t\,\beta S(2\Delta t)I(2\Delta t)\approx 49.98\\
+I(3\Delta t) &= I(2\Delta t) + \Delta t\,\beta S(2\Delta t)I(2\Delta t) -\Delta t\,\nu I(2\Delta t)\approx 1.017\\
+R(3\Delta t) &= R(2\Delta t) + \Delta t\,\nu R(2\Delta t)\approx 0.0025
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+
+<p class="fragment">
+
+But this is getting boring! Let's ask a computer to do the work!
+
+</p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>First, some handy notation  <a name="___sec8"></a></h2>
+
+\( S^n = S(n\Delta t) \),
+\( I^n = I(n\Delta t) \), \( R^n = R(n\Delta t) \).
+
+<p>
+The equations can now be written as
+
+<p>&nbsp;<br>
+$$
+\begin{align}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n
+\tag{4}\\
+I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
+\tag{5}\\
+R^{n+1} &= R^n + \Delta t\,\nu R^n
+\tag{6}
+\end{align}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We variables, arrays, and a loop we can program  <a name="___sec9"></a></h2>
+
+Suppose we want to compute until \( t=N\Delta t \), i.e., for \( n=0,1,\ldots,N-1 \).
+We can store \( S^0, S^1, S^2, \ldots, S^N \) in an array (or list).
+
+<p>
+Python (Matlab):
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, N<span style="color: #666666">*</span>dt, N<span style="color: #666666">+1</span>)  <span style="color: #408080; font-style: italic"># all time points</span>
+S <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)
+I <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)
+R <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)
+
+<span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(N):
+    S[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> S[n] <span style="color: #666666">-</span> dt<span style="color: #666666">*</span>beta<span style="color: #666666">*</span>S[n]<span style="color: #666666">*</span>I[n]
+    I[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> I[n] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>beta<span style="color: #666666">*</span>S[n]<span style="color: #666666">*</span>I[n] <span style="color: #666666">-</span> dt<span style="color: #666666">*</span>nu<span style="color: #666666">*</span>I[n]
+    R[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> R[n] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>nu<span style="color: #666666">*</span>I[n]
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Here is the complete program  <a name="___sec10"></a></h2>
+
+Let time be measured in hours.
+
+<p>
+
+<!-- code=python (!bc pycod) typeset with pygments style "default" -->
+<div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; line-height: 125%">beta <span style="color: #666666">=</span> <span style="color: #666666">0.0013</span>
+nu <span style="color: #666666">=0.8333</span>
+dt <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>             <span style="color: #408080; font-style: italic"># 6 min</span>
+D <span style="color: #666666">=</span> <span style="color: #666666">30</span>               <span style="color: #408080; font-style: italic"># simulate for D days</span>
+N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(D<span style="color: #666666">*24/</span>dt)     <span style="color: #408080; font-style: italic"># corresponding no of hours</span>
+
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">numpy</span> <span style="color: #008000; font-weight: bold">import</span> zeros, linspace
+t <span style="color: #666666">=</span> linspace(<span style="color: #666666">0</span>, N<span style="color: #666666">*</span>dt, N<span style="color: #666666">+1</span>)
+S <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)
+I <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)
+R <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</span>)
+
+<span style="color: #008000; font-weight: bold">for</span> n <span style="color: #AA22FF; font-weight: bold">in</span> <span style="color: #008000">range</span>(N):
+    S[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> S[n] <span style="color: #666666">-</span> dt<span style="color: #666666">*</span>beta<span style="color: #666666">*</span>S[n]<span style="color: #666666">*</span>I[n]
+    I[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> I[n] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>beta<span style="color: #666666">*</span>S[n]<span style="color: #666666">*</span>I[n] <span style="color: #666666">-</span> dt<span style="color: #666666">*</span>nu<span style="color: #666666">*</span>I[n]
+    R[n<span style="color: #666666">+1</span>] <span style="color: #666666">=</span> R[n] <span style="color: #666666">+</span> dt<span style="color: #666666">*</span>nu<span style="color: #666666">*</span>I[n]
+
+<span style="color: #408080; font-style: italic"># Plot the graphs</span>
+<span style="color: #008000; font-weight: bold">from</span> <span style="color: #0000FF; font-weight: bold">matplotlib.pyplot</span> <span style="color: #008000; font-weight: bold">import</span> <span style="color: #666666">*</span>
+plot(t, S, <span style="color: #BA2121">&#39;k-&#39;</span>, t, I, <span style="color: #BA2121">&#39;b-&#39;</span>, t, R, <span style="color: #BA2121">&#39;r-&#39;</span>)
+legend([<span style="color: #BA2121">&#39;S&#39;</span>, <span style="color: #BA2121">&#39;I&#39;</span>, <span style="color: #BA2121">&#39;R&#39;</span>], loc<span style="color: #666666">=</span><span style="color: #BA2121">&#39;lower right&#39;</span>)
+xlabel(<span style="color: #BA2121">&#39;hours&#39;</span>)
+show()
+</pre></div>
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We have predicted a disease!  <a name="___sec11"></a></h2>
+
+<center><p><img src="fig/SIR1.png" align="bottom" width=800></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>How much math and programming did we use?  <a name="___sec12"></a></h2>
+
+<ul>
+ <p><li> Plain arithmetics</li>
+ <p><li> The concept of a graph (i.e., discrete function in time)</li>
+ <p><li> Units</li>
+ <p><li> Variable</li>
+ <p><li> Array</li>
+ <p><li> Loop</li>
+ <p><li> Plotting</li>
+</ul>
+<p>
+
+
+</section>
+
+
+<section>
+
+<h2>Detour: The standard mathematical approach  <a name="___sec13"></a></h2>
+
+We had from intuition established
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+S(t+\Delta t) &= S(t) - \Delta t\,\beta S(t)I(t)\\
+I(t+\Delta t) &= I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\,\nu I(t)\\
+R(t+\Delta t) &= R(t) + \Delta t\,\nu R(t)
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+The mathematician will now make a <em>differential equations</em>. First,
+divide by \( \Delta t \) and move \( S \), \( I \), and \( R \) to the left-hand side:
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+\frac{S(t+\Delta t) - S(t)}{\Delta t} &= - \beta S(t)I(t)\\
+\frac{I(t+\Delta t) - I(t)}{\Delta t} &= \beta t S(t)I(t) -\nu I(t)\\
+\frac{R(t+\Delta t) - R(t)}{\Delta t} &= \nu R(t)
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>A derivative arises as \( \Delta t\rightarrow 0 \)  <a name="___sec14"></a></h2>
+
+In any calculus book, the derivative of \( S \) at \( t \) is defined as
+
+<p>&nbsp;<br>
+$$ S'(t) = \lim_{t\rightarrow 0}\frac{S(t+\Delta t) - S(t)}{\Delta t}$$
+<p>&nbsp;<br>
+
+
+<p>
+If we let \( \Delta t\rightarrow 0 \), we get derivatives on the left-hand side:
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+S'(t) &= - \beta S(t)I(t)\\
+I'(t) &= \beta t S(t)I(t) -\nu I(t)\\
+R'(t) &= \nu R(t)
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+This is a 3x3 system of differential equations for the functions
+\( S(t) \), \( I(t) \), \( R(t) \). For a unique solution, we need
+\( S(0) \), \( I(0) \), \( R(0) \).
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Bad news: we cannot solve these equations!  <a name="___sec15"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Time to ask a numerical methods expert:</b>
+Replace the derivative with a <em>finite difference</em>, e.g.,
+
+<p>&nbsp;<br>
+$$ S'(t) \approx \frac{S(t+\Delta t) - S(t)}{\Delta t}$$
+<p>&nbsp;<br>
+
+which is accurate for small \( \Delta t \).
+</div>
+
+
+<p>
+This brings us back to the first model, which we can solve
+on a computer!
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Parameter estimation is needed for predictive modeling  <a name="___sec16"></a></h2>
+
+<ul>
+ <p><li> Any small \( \Delta t \) will do</li>
+ <p><li> One can reason about \( \nu \) and say that \( 1/\nu \) is the mean
+   recovery time for the disease (e.g., 1 week for a flu)</li>
+ <p><li> \( \beta \) must in some way be measured, but we don't know what it means...</li>
+</ul>
+<p>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>So, what if we don't know \( \beta \)?</b>
+
+<ul>
+ <p><li> Can still learn about the <em>dynamics</em> of diseases</li>
+ <p><li> Can find the sensitivity to and influence of \( \beta \)</li>
+ <p><li> Can apply <em>parameter estimation</em> procedures to fit \( \beta \) to data</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Let us extend the model: no life-long immunity  <a name="___sec17"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Assumption.</b>
+After some time, people in the R category lose the immunity.
+In a small time \( \Delta t \) this gives a leakage \( \Delta t\,\gamma R \)
+to the S category. (\( 1/\gamma \) is the mean time for immunity.)
+</div>
+
+
+<p>
+<center><p><img src="fig/categories_SIR_feedback.png" align="bottom" width=400></p></center>
+
+<p>&nbsp;<br>
+$$
+\begin{align}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \color{red}{\Delta t\,\gamma R^n}
+\tag{7}\\
+I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
+\tag{8}\\
+R^{n+1} &= R^n + \Delta t\,\nu R^n - \color{red}{\Delta t\,\gamma R^n}
+\tag{9}
+\end{align}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+No complications in the computational model!
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The effect of loss of immunity  <a name="___sec18"></a></h2>
+
+\( 1/\gamma = 50 \) days. \( \beta \) reduced by 2 and 4:
+
+<p>
+<center><p><img src="fig/SIR2.png" align="bottom" width=950></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>What is the effect of vaccination?  <a name="___sec19"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Assumptions.</b>
+A fraction \( p \) of the S category, per time unit, is vaccinated with
+success. Then in time \( \Delta t \), \( p\Delta t S \) will move to a
+vaccinated category, V. This does not affect the I and R categories.
+</div>
+
+
+<p>
+<center><p><img src="fig/categories_SIRV.png" align="bottom" width=400></p></center>
+
+<p>&nbsp;<br>
+$$
+\begin{align}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \Delta t\,\gamma R^n - \color{red}{p\Delta t S^n}
+\tag{10}\\
+V^{n+1} &= V^n + \color{red}{p\Delta t S^n}
+\tag{11}\\
+I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
+\tag{12}\\
+R^{n+1} &= R^n + \Delta t\,\nu R^n - \Delta t\,\gamma R^n
+\tag{13}
+\end{align}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Implementation: Just add array for \( V^n \) and add equation.
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Many possibilities for adjusting the model...  <a name="___sec20"></a></h2>
+
+The effect of vaccination decreases, so we may move people back to
+the S category (term proportional to \( \Delta t V \)).
+
+<p>
+<center><p><img src="fig/categories_SIRV_feedback.png" align="bottom" width=400></p></center>
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Effect of adding vaccination  <a name="___sec21"></a></h2>
+
+<center><p><img src="fig/SIRV1.png" align="bottom" width=800></p></center>
+
+<p>
+(\( p=0.005 \))
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>What is the effect of an intensive vaccination campaign?  <a name="___sec22"></a></h2>
+
+10 times more intense vaccination for 10 days, 6 days after outbreak:
+
+<p>&nbsp;<br>
+$$
+\begin{equation*} p(t) = \left\lbrace\begin{array}{ll}
+0.05,& 6\leq t\leq 15,\\
+0,& \hbox{otherwise} \end{array}\right.\end{equation*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Implementation: Let \( p^n \) be an array as \( V^n \). Set \( p^n=0.05 \) for
+\( n=6\cdot 24/0.1,\ldots, 15\cdot 24/0.1 \) (\( \mbox{days}\cdot 24 \mbox{h per
+day}\Delta t \)).
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Effect of vaccination campaign  <a name="___sec23"></a></h2>
+
+<center><p><img src="fig/SIRV2.png" align="bottom" width=800></p></center>
+
+<p>
+Could now let the computer run a lot of cases and find the optimal
+vaccination period.
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>We can experiment with other campaigns  <a name="___sec24"></a></h2>
+
+
+<table border="0">
+<tr>
+<td class="padding">
+<center><p><img src="fig/disease2.jpg" align="bottom" width=400></p></center>
+</td>
+<td class="padding">
+Masks lower \( \beta \):
+
+<p>&nbsp;<br>
+$$
+\begin{equation*} \beta(t) = \left\lbrace\begin{array}{ll}
+\beta_1,& 0\leq t < 5,\\
+\beta_2 < \beta_1,& t \geq 5\end{array}\right.
+\end{equation*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Very easy to implement. (Used to be complicated in differential
+equation models...)
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>And now for something similar: zombification  <a name="___sec25"></a></h2>
+
+<center><p><img src="fig/zombie1.jpg" align="bottom" width=900></p></center>
+
+<p>
+<b>Zombification</b>: The disease that turns you into a zombie.
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Zombie modeling is almost the same as SIR modeling  <a name="___sec26"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Categories.</b>
+
+<ol>
+ <p><li> S: susceptible humans who can become zombies</li>
+ <p><li> I: infected humans, being bitten by zombies</li>
+ <p><li> Z: zombies</li>
+ <p><li> R: removed individuals, either conquered zombies or dead humans</li>
+</ol>
+<p>
+</div>
+
+
+<p>
+Mathematical quantities: \( S(t) \), \( I(t) \), \( Z(t) \), \( R(t) \)
+
+<p>
+Zombie movie: <em>The Night of the Living Dead</em>, Geoerge A. Romero, 1968
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Dynamics of the zombie SIZR model  <a name="___sec27"></a></h2>
+
+<center><p><img src="fig/categories_SIZR.png" align="bottom" width=380></p></center>
+
+<p>
+
+
+<ol>
+ <p><li class="fragment"> Susceptibles are infected by zombies: \( -\Delta t\beta SZ \) in time \( \Delta t \) (cf. the \( \Delta t\,\beta SI \) term in the SIR model).</li>
+ <p><li class="fragment"> Susceptibles die naturally or get killed and then enter the removed category. The no of deaths in time \( \Delta t \) is \( \Delta t\delta_S S \).</li>
+ <p><li class="fragment"> We also allow new humans to enter the area with zombies (necessary in a war on zombies): \( \Delta t\Sigma \) during a time \( \Delta t \).</li>
+ <p><li class="fragment"> Some infected turn into zombies (Z): \( \Delta t\rho I \), while others die (R): \( \delta_I\Delta t I \).</li>
+ <p><li class="fragment"> Nobody from R can turn into Z (important - otherwise zombies win).</li>
+ <p><li class="fragment"> Killed zombies go to R: \( \Delta t\alpha SZ \).</li>
+</ol>
+<p>
+
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>The four equations in the SIZR model for zombification  <a name="___sec28"></a></h2>
+
+<p>&nbsp;<br>
+$$
+\begin{align*}
+S^{n+1} &= S^n + \Delta t\,\Sigma - \Delta t\,\beta S^nZ - \Delta t\,\delta_S S^n\\
+I^{n+1} &= I^n + \Delta t\,\beta S^nZ^n - \Delta t\,\rho I^n - \Delta t\,\delta_I I^n\\
+Z^{n+1} &= Z^n + \Delta t\,\rho I^n - \Delta t\,\alpha S^nZ^n\\
+R^{n+1} &= R^n + \Delta t\,\delta_S S^n  + \Delta t\,\delta_I I^n +
+\Delta t\,\alpha S^nZ^n
+\end{align*}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-small"><b>Interpretation of parameters:</b>
+
+<ul>
+  <p><li> \( \Sigma \): no of new humans brought into the zombified area per unit time.</li>
+  <p><li> \( \beta \): the probability that a theoretically possible human-zombie pair actually meets physically, during a unit time interval, with the result that the human is infected.</li>
+  <p><li> \( \delta_S \): the probability that a susceptible human is killed or dies, in a unit time interval.</li>
+  <p><li> \( \delta_I \): the probability that an infected human is killed or dies, in a unit time interval.</li>
+  <p><li> \( \rho \): the probability that an infected human is turned into a zombie, during a unit time interval.</li>
+  <p><li> \( \alpha \): the probability that, during a unit time interval, a theoretically possible human-zombie pair fights and the human kills the zombie.</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Simulate a zombie movie!  <a name="___sec29"></a></h2>
+
+
+<table border="0">
+<tr>
+<td class="padding">
+<div class="alert alert-block alert-block alert-text-normal"><b>Three fundamental phases.</b>
+
+<ol>
+<p><li> The initial phase (4 h)</li>
+<p><li> The hysteric phase (24 h)</li>
+<p><li> The counter attack phase (5 h)</li>
+</ol>
+<p>
+</div>
+
+</td>
+<td class="padding">
+<center><p><img src="fig/TNotLD.png" align="bottom" width=300></p></center>
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+
+<p class="fragment">
+
+How do we do this? As \( p \) in the vaccination campaign - the parameters
+take on different constant values in different time intervals.
+
+</p>
+
+
+<p>
+
+<p class="fragment">
+
+H. P. Langtangen and K.-A. Mardal and P. Røtnes:
+Escaping the Zombie Threat by Mathematics, in
+A. Whelan et al.: <em>Zombies in the Academy - Living Death in Higher Education</em>,
+University of Chicago Press, 2013
+
+</p>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Effective war on zombies  <a name="___sec30"></a></h2>
+
+Introduce attacks on zombies at selected times \( T_0, T_1, \ldots, T_m \).
+
+<p>
+Model: Replace \( \alpha \) by
+
+<p>&nbsp;<br>
+$$ \alpha_0 + \omega (t),$$
+<p>&nbsp;<br>
+
+where \( \alpha_0 \) is constant and \( \omega(t) \) is a series of
+Gaussian functions (peaks) in time:
+
+<p>&nbsp;<br>
+$$ \omega(t) = a\sum_{i=0}^m \exp{\left(-\frac{1}{2}\left({t - T_i\over\sigma}\right)\right)}
+$$
+<p>&nbsp;<br>
+
+
+<p>
+Must experiment with values of \( a \) (strength), \( \sigma \) (duration is \( 6\sigma \)),
+point of attacks (\( T_i \))
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>Summary  <a name="___sec31"></a></h2>
+
+<ul>
+ <p><li> A complex spreading is diseases can be modeled by intuitive, simple
+   accounting of movement between categories</li>
+ <p><li> Such models are knowns as <em>compartment models</em></li>
+ <p><li> Result: difference equations that are easy to simulate on a computer</li>
+ <p><li> (Can let \( \Delta t\rightarrow 0 \) and get differential equations)</li>
+ <p><li> Easy to add new effects (vaccination, campaigns, zombification)</li>
+</ul>
+<p>
+
+
+
+</section>
+
+
+
+</div> <!-- class="slides" -->
+</div> <!-- class="reveal" -->
+
+<script src="reveal.js/lib/js/head.min.js"></script>
+<script src="reveal.js/js/reveal.min.js"></script>
+
+<script>
+// Full list of configuration options available here:
+// https://github.com/hakimel/reveal.js#configuration
+Reveal.initialize({
+
+    // Display navigation controls in the bottom right corner
+    controls: true,
+
+    // Display progress bar (below the horiz. slider)
+    progress: true,
+
+    // Display the page number of the current slide
+    slideNumber: true,
+
+    // Push each slide change to the browser history
+    history: false,
+
+    // Enable keyboard shortcuts for navigation
+    keyboard: true,
+
+    // Enable the slide overview mode
+    overview: true,
+
+    // Vertical centering of slides
+    //center: true,
+    center: false,
+
+    // Enables touch navigation on devices with touch input
+    touch: true,
+
+    // Loop the presentation
+    loop: false,
+
+    // Change the presentation direction to be RTL
+    rtl: false,
+
+    // Turns fragments on and off globally
+    fragments: true,
+
+    // Flags if the presentation is running in an embedded mode,
+    // i.e. contained within a limited portion of the screen
+    embedded: false,
+
+    // Number of milliseconds between automatically proceeding to the
+    // next slide, disabled when set to 0, this value can be overwritten
+    // by using a data-autoslide attribute on your slides
+    autoSlide: 0,
+
+    // Stop auto-sliding after user input
+    autoSlideStoppable: true,
+
+    // Enable slide navigation via mouse wheel
+    mouseWheel: false,
+
+    // Hides the address bar on mobile devices
+    hideAddressBar: true,
+
+    // Opens links in an iframe preview overlay
+    previewLinks: false,
+
+    // Transition style
+    transition: 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+    // Transition speed
+    transitionSpeed: 'default', // default/fast/slow
+
+    // Transition style for full page slide backgrounds
+    backgroundTransition: 'default', // default/none/slide/concave/convex/zoom
+
+    // Number of slides away from the current that are visible
+    viewDistance: 3,
+
+    // Parallax background image
+    //parallaxBackgroundImage: '', // e.g. "'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg'"
+
+    // Parallax background size
+    //parallaxBackgroundSize: '' // CSS syntax, e.g. "2100px 900px"
+
+    theme: Reveal.getQueryHash().theme, // available themes are in reveal.js/css/theme
+    transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/none
+
+});
+
+Reveal.initialize({
+    dependencies: [
+        // Cross-browser shim that fully implements classList - https://github.com/eligrey/classList.js/
+        { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+
+        // Interpret Markdown in <section> elements
+        { src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+        { src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+        // Syntax highlight for <code> elements
+        { src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+
+        // Zoom in and out with Alt+click
+        { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Speaker notes
+        { src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // Remote control your reveal.js presentation using a touch device
+        //{ src: 'reveal.js/plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } },
+
+        // MathJax
+        //{ src: 'reveal.js/plugin/math/math.js', async: true }
+    ]
+});
+
+Reveal.initialize({
+
+    // The "normal" size of the presentation, aspect ratio will be preserved
+    // when the presentation is scaled to fit different resolutions. Can be
+    // specified using percentage units.
+    width:  960,
+    height: 700,
+
+    // Factor of the display size that should remain empty around the content
+    margin: 0.1,
+
+    // Bounds for smallest/largest possible scale to apply to content
+    minScale: 0.2,
+    maxScale: 1.0
+
+});
+</script>
+
+<!-- begin footer logo
+<div style="position: absolute; bottom: 0px; left: 0; margin-left: 0px">
+<img src="somelogo.png">
+</div>
+     end footer logo -->
+
+
+
+</body>
+</html>
