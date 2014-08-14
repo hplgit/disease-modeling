@@ -555,9 +555,17 @@ point of attacks ($T_i$)
 !split
 ===== Summary =====
 
- * A complex spreading is diseases can be modeled by intuitive, simple
+ * A complex spreading of diseases can be modeled by intuitive, simple
    accounting of movement between categories
  * Such models are knowns as *compartment models*
  * Result: difference equations that are easy to simulate on a computer
  * (Can let $\Delta t\rightarrow 0$ and get differential equations)
  * Easy to add new effects (vaccination, campaigns, zombification)
+
+!bblock All these slides and associated programs are available
+Site: "`https://github.com/hplgit/disease-modeling`": "https://github.com/hplgit/disease-modeling". Just do
+
+!bc sys
+Terminal> git clone https://github.com/hplgit/disease-modeling.git
+!ec
+!eblock
