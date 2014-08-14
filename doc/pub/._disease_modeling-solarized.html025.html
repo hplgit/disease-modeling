@@ -1,0 +1,221 @@
+<!--
+Automatically generated HTML file from Doconce source
+(https://github.com/hplgit/doconce/)
+-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="description" content="Mathematical Modeling of the Spreading of Diseases">
+
+
+
+
+<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+<link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
+<style type="text/css">
+.alert-text-small   { font-size: 80%;  }
+.alert-text-large   { font-size: 130%; }
+.alert-text-normal  { font-size: 90%;  }
+.alert {
+  padding:8px 35px 8px 14px; margin-bottom:18px;
+  text-shadow:0 1px 0 rgba(255,255,255,0.5);
+  border:1px solid #93a1a1;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  color: #555;
+  background-color: #eee8d5;
+  background-position: 10px 5px;
+  background-repeat: no-repeat;
+  background-size: 38px;
+  padding-left: 55px;
+  width: 75%;
+ }
+.alert-block {padding-top:14px; padding-bottom:14px}
+.alert-block > p, .alert-block > ul {margin-bottom:1em}
+.alert li {margin-top: 1em}
+.alert-block p+p {margin-top:5px}
+.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+
+div { text-align: justify; text-justify: inter-word; }
+</style>
+
+</head>
+
+<!-- tocinfo
+{'highest level': 2,
+ 'sections': [(u' A very complex phenomenon is modeled by simple math.... ',
+               2,
+               None,
+               '___sec0'),
+              (u' We keep track of 3 categories ', 2, None, '___sec1'),
+              (u' $\\Delta t\\,\\beta SI$ people move from S to I in a time inverval $\\Delta t$ ',
+               2,
+               None,
+               '___sec2'),
+              (u' For practical calculations, we must express the S-I interaction with symbols ',
+               2,
+               None,
+               '___sec3'),
+              (u' Modeling the interaction between R and I ',
+               2,
+               None,
+               '___sec4'),
+              (u' We have three equations for $S$, $I$, and $R$ ',
+               2,
+               None,
+               '___sec5'),
+              (u' The computation involves just simple arithmetics ',
+               2,
+               None,
+               '___sec6'),
+              (u' And we can continue... ', 2, None, '___sec7'),
+              (u' First, some handy notation ', 2, None, '___sec8'),
+              (u' We variables, arrays, and a loop we can program ',
+               2,
+               None,
+               '___sec9'),
+              (u' Here is the complete program ', 2, None, '___sec10'),
+              (u' We have predicted a disease! ', 2, None, '___sec11'),
+              (u' How much math and programming did we use? ',
+               2,
+               None,
+               '___sec12'),
+              (u' Detour: The standard mathematical approach ',
+               2,
+               None,
+               '___sec13'),
+              (u' A derivative arises as $\\Delta t\\rightarrow 0$ ',
+               2,
+               None,
+               '___sec14'),
+              (u' Bad news: we cannot solve these equations! ',
+               2,
+               None,
+               '___sec15'),
+              (u' Parameter estimation is needed for predictive modeling ',
+               2,
+               None,
+               '___sec16'),
+              (u' Let us extend the model: no life-long immunity ',
+               2,
+               None,
+               '___sec17'),
+              (u' The effect of loss of immunity ', 2, None, '___sec18'),
+              (u' What is the effect of vaccination? ', 2, None, '___sec19'),
+              (u' Many possibilities for adjusting the model... ',
+               2,
+               None,
+               '___sec20'),
+              (u' Effect of adding vaccination ', 2, None, '___sec21'),
+              (u' What is the effect of an intensive vaccination campaign? ',
+               2,
+               None,
+               '___sec22'),
+              (u' Effect of vaccination campaign ', 2, None, '___sec23'),
+              (u' We can experiment with other campaigns ',
+               2,
+               None,
+               '___sec24'),
+              (u' And now for something similar: zombification ',
+               2,
+               None,
+               '___sec25'),
+              (u' Zombie modeling is almost the same as SIR modeling ',
+               2,
+               None,
+               '___sec26'),
+              (u' Dynamics of the zombie SIZR model ', 2, None, '___sec27'),
+              (u' The four equations in the SIZR model for zombification ',
+               2,
+               None,
+               '___sec28'),
+              (u' Simulate a zombie movie! ', 2, None, '___sec29'),
+              (u' Effective war on zombies ', 2, None, '___sec30'),
+              (u' Summary ', 2, None, '___sec31')]}
+end of tocinfo -->
+
+<body>
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: {
+     equationNumbers: {  autoNumber: "none"  },
+     extensions: ["AMSmath.js", "AMSsymbols.js", "autobold.js", "color.js"]
+  }
+});
+</script>
+<script type="text/javascript"
+ src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+    
+<a name="part0025"></a>
+<p>
+<!-- begin top navigation -->
+<div style="text-align: left;"><a href="._disease_modeling-solarized.html024.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+
+<div style="text-align: right;"><a href="._disease_modeling-solarized.html026.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+<!-- end top navigation -->
+</p>
+
+<p>
+<!-- !split -->
+
+<h2>We can experiment with other campaigns  <a name="___sec24"></a></h2>
+
+
+<table border="0">
+<tr>
+<td class="padding">
+<center><p><img src="fig/disease2.jpg" align="bottom" width=400></p></center>
+</td>
+<td class="padding">
+Masks lower \( \beta \):
+
+$$
+\begin{equation*} \beta(t) = \left\lbrace\begin{array}{ll}
+\beta_1,& 0\leq t < 5,\\
+\beta_2 < \beta_1,& t \geq 5\end{array}\right.
+\end{equation*}
+$$
+
+
+<p>
+Very easy to implement. (Used to be complicated in differential
+equation models...)
+</td>
+</tr>
+</table>
+
+
+<p>
+
+
+<p>
+<p>
+<!-- begin bottom navigation -->
+<div style="text-align: left;"><a href="._disease_modeling-solarized.html024.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/prev1.png" border=0 alt="&laquo; Previous"></a></div>
+
+<div style="text-align: right;"><a href="._disease_modeling-solarized.html026.html"><img src="http://hplgit.github.io/doconce/bundled/html_images/next1.png" border=0 alt="Next &raquo;"></a></div>
+<!-- end bottom navigation -->
+</p>
+
+<!-- ------------------- end of main content --------------- -->
+
+
+</body>
+</html>
+    
+
