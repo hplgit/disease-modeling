@@ -185,7 +185,7 @@ label{SIR1:Rc}
 !et
 
 !split
-===== We variables, arrays, and a loop we can program =====
+===== With variables, arrays, and a loop we can program =====
 
 Suppose we want to compute until $t=N\Delta t$, i.e., for $n=0,1,\ldots,N-1$.
 We can store $S^0, S^1, S^2, \ldots, S^N$ in an array (or list).

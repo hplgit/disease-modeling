@@ -16,12 +16,10 @@ opt="--encoding=utf-8"
 html=${name}-reveal
 system doconce format html $name --pygments_html_style=native --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $opt
 system doconce slides_html $html reveal --html_slide_theme=darkgray
-doconce replace 'pre style="' 'pre style="font-size: 80%; ' $html.html
 
 html=${name}-reveal-beige
 system doconce format html $name --pygments_html_style=perldoc --keep_pygments_html_bg --html_links_in_new_window --html_output=$html $opt
 system doconce slides_html $html reveal --html_slide_theme=beige
-doconce replace 'pre style="' 'pre style="font-size: 80%; ' $html.html
 
 # LaTeX Beamer slides
 beamertheme=red_shadow
@@ -46,14 +44,13 @@ system doconce format html $name --pygments_html_style=perldoc --html_style=sola
 #system doconce slides_html $html doconce
 
 # Publish
-cp -r *.html .*.html *.pdf *.js fig ../pub
+cp -r *.html *.pdf *.js fig ../pub
+#cp .*.html  ../pub  # no such splittings
 exit
 
 html=${name}-plain
 system doconce format html $name --pygments_html_style=default --html_style=bloodish --html_links_in_new_window --html_output=$html $opt
 system doconce split_html $html.html
-# Remove top navigation in all parts
-doconce subst -s '<!-- begin top navigation.+?end top navigation -->' '' ${name}-plain.html ._${name}*.html
 
 # One big HTML file with space between the slides
 html=${name}-1
