@@ -1,11 +1,12 @@
-TITLE: Mathematical Modeling of the Spreading of Diseases
+#TITLE: Mathematical Modeling of the Spreading of Diseases
+TITLE: Modeling the Spreading of Diseases
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & University of Oslo, Dept. of Informatics
 DATE: today
 
 FIGURE: [fig/disease1, width=400]
 
 !split
-===== A very complex phenomenon is modeled by simple math.... =====
+===== We shall model a very complex phenomenon by simple math.... =====
 
 !bblock Assumptions:
  * We have a perfectly mixed population in a confined area
@@ -18,7 +19,7 @@ FIGURE: [fig/disease1, width=400]
 !bpop
 We consider very simple models, but these can be extended to full
 models that are used world-wide by health authorities. Typical
-diseases: flu, measles, swine flu, HIV, ...
+diseases modeled are flu, measles, swine flu, HIV, ...
 !epop
 
 !split
@@ -37,6 +38,8 @@ $S(t)$, $I(t)$, $R(t)$ (no of people).
 !bblock Goal:
 Find and solve equations for $S(t)$, $I(t)$, $R(t)$.
 !eblock
+
+FIGURE: [fig/categories_SIR, width=400 frac=0.7]
 
 !split
 ===== $\Delta t\,\beta SI$ people move from S to I in a time inverval $\Delta t$ =====
