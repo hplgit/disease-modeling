@@ -140,7 +140,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Aug 24, 2014</h4></center> <!-- date -->
+<center><h4>Aug 25, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/disease1.jpg" align="bottom" width=400></p></center>
 
@@ -219,7 +219,30 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
 
 <section>
 
-<h2>\( \Delta t\,\beta SI \) people move from S to I in a time inverval \( \Delta t \)  <a name="___sec2"></a></h2>
+<h2>The traditional modeling approach is very mathematical  <a name="___sec2"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b></b>
+
+<ul>
+ <p><li> Numerous books on mathematical biology treat the SIR model</li>
+ <p><li> Quick modeling step (max 2 pages)</li>
+ <p><li> Nonlinear differential equation model</li>
+ <p><li> Cannot solve the equations, so focus is on discussing
+   stability (eigenvalues), properties, etc.</li>
+ <p><li> Very few extensions of the model</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+
+</section>
+
+
+<section>
+
+<h2>\( \Delta t\,\beta SI \) people move from S to I in a time inverval \( \Delta t \)  <a name="___sec3"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal"><b>S-I interaction:</b>
 
@@ -251,7 +274,7 @@ depend on \( \Delta t \), but maybe time \( t \).
 
 <section>
 
-<h2>For practical calculations, we must express the S-I interaction with symbols  <a name="___sec3"></a></h2>
+<h2>For practical calculations, we must express the S-I interaction with symbols  <a name="___sec4"></a></h2>
 
 Loss in \( S(t) \):
 
@@ -275,7 +298,7 @@ $$ I(t+\Delta t) = I(t) + \Delta t\,\beta S(t)I(t)$$
 
 <section>
 
-<h2>Modeling the interaction between R and I  <a name="___sec4"></a></h2>
+<h2>Modeling the interaction between R and I  <a name="___sec5"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal"><b>R-I interaction:</b>
 
@@ -312,15 +335,15 @@ $$ R(t+\Delta t) = R(t) + \Delta t\,\nu R(t)$$
 
 <section>
 
-<h2>We have three equations for \( S \), \( I \), and \( R \)  <a name="___sec5"></a></h2>
+<h2>We have three equations for \( S \), \( I \), and \( R \)  <a name="___sec6"></a></h2>
 
 <p>&nbsp;<br>
 $$
 \begin{align}
 S(t+\Delta t) &= S(t) - \Delta t\,\beta S(t)I(t)
-\tag{1}\\
+\tag{1}\\ 
 I(t+\Delta t) &= I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\nu I(t)
-\tag{2}\\
+\tag{2}\\ 
 R(t+\Delta t) &= R(t) + \Delta t\,\nu R(t)
 \tag{3}
 \end{align}
@@ -347,7 +370,7 @@ Before we can compute with these, we must
 
 <section>
 
-<h2>The computation involves just simple arithmetics  <a name="___sec6"></a></h2>
+<h2>The computation involves just simple arithmetics  <a name="___sec7"></a></h2>
 
 <ul>
  <p><li> Set \( \Delta t=6 \) minutes</li>
@@ -359,8 +382,8 @@ Before we can compute with these, we must
 <p>&nbsp;<br>
 $$
 \begin{align*}
-S(\Delta t) &= S(0) - \Delta t\,\beta S(0)I(0)\approx 49.99\\
-I(\Delta t) &= I(0) + \Delta t\,\beta S(0)I(0) -\Delta t\,\nu I(0)\approx 1.002\\
+S(\Delta t) &= S(0) - \Delta t\,\beta S(0)I(0)\approx 49.99\\ 
+I(\Delta t) &= I(0) + \Delta t\,\beta S(0)I(0) -\Delta t\,\nu I(0)\approx 1.002\\ 
 R(\Delta t) &= R(0) + \Delta t\,\nu R(0)\approx 0.0008333
 \end{align*}
 $$
@@ -386,13 +409,13 @@ $$
 
 <section>
 
-<h2>And we can continue...  <a name="___sec7"></a></h2>
+<h2>And we can continue...  <a name="___sec8"></a></h2>
 
 <p>&nbsp;<br>
 $$
 \begin{align*}
-S(2\Delta t) &= S(\Delta t) - \Delta t\,\beta S(\Delta t)I(\Delta t)\approx 49.87\\
-I(2\Delta t) &= I(\Delta t) + \Delta t\,\beta S(\Delta t)I(\Delta t) -\Delta t\,\nu I(\Delta t)\approx 1.011\\
+S(2\Delta t) &= S(\Delta t) - \Delta t\,\beta S(\Delta t)I(\Delta t)\approx 49.87\\ 
+I(2\Delta t) &= I(\Delta t) + \Delta t\,\beta S(\Delta t)I(\Delta t) -\Delta t\,\nu I(\Delta t)\approx 1.011\\ 
 R(2\Delta t) &= R(\Delta t) + \Delta t\,\nu R(\Delta t)\approx 0.00167
 \end{align*}
 $$
@@ -405,8 +428,8 @@ Repeat...
 <p>&nbsp;<br>
 $$
 \begin{align*}
-S(3\Delta t) &= S(2\Delta t) - \Delta t\,\beta S(2\Delta t)I(2\Delta t)\approx 49.98\\
-I(3\Delta t) &= I(2\Delta t) + \Delta t\,\beta S(2\Delta t)I(2\Delta t) -\Delta t\,\nu I(2\Delta t)\approx 1.017\\
+S(3\Delta t) &= S(2\Delta t) - \Delta t\,\beta S(2\Delta t)I(2\Delta t)\approx 49.98\\ 
+I(3\Delta t) &= I(2\Delta t) + \Delta t\,\beta S(2\Delta t)I(2\Delta t) -\Delta t\,\nu I(2\Delta t)\approx 1.017\\ 
 R(3\Delta t) &= R(2\Delta t) + \Delta t\,\nu R(2\Delta t)\approx 0.0025
 \end{align*}
 $$
@@ -429,7 +452,7 @@ But this is getting boring! Let's ask a computer to do the work!
 
 <section>
 
-<h2>First, some handy notation  <a name="___sec8"></a></h2>
+<h2>First, some handy notation  <a name="___sec9"></a></h2>
 
 \( S^n = S(n\Delta t) \),
 \( I^n = I(n\Delta t) \), \( R^n = R(n\Delta t) \).
@@ -441,9 +464,9 @@ The equations can now be written as
 $$
 \begin{align}
 S^{n+1} &= S^n - \Delta t\,\beta S^nI^n
-\tag{4}\\
+\tag{4}\\ 
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
-\tag{5}\\
+\tag{5}\\ 
 R^{n+1} &= R^n + \Delta t\,\nu R^n
 \tag{6}
 \end{align}
@@ -458,7 +481,7 @@ $$
 
 <section>
 
-<h2>With variables, arrays, and a loop we can program  <a name="___sec9"></a></h2>
+<h2>With variables, arrays, and a loop we can program  <a name="___sec10"></a></h2>
 
 Suppose we want to compute until \( t=N\Delta t \), i.e., for \( n=0,1,\ldots,N-1 \).
 We can store \( S^0, S^1, S^2, \ldots, S^N \) in an array (or list).
@@ -486,7 +509,7 @@ Python (Matlab):
 
 <section>
 
-<h2>Here is the complete program  <a name="___sec10"></a></h2>
+<h2>Here is the complete program  <a name="___sec11"></a></h2>
 
 Let time be measured in hours.
 
@@ -524,7 +547,7 @@ Let time be measured in hours.
 
 <section>
 
-<h2>We have predicted a disease!  <a name="___sec11"></a></h2>
+<h2>We have predicted a disease!  <a name="___sec12"></a></h2>
 
 <center><p><img src="fig/SIR1.png" align="bottom" width=800></p></center>
 
@@ -535,34 +558,49 @@ Let time be measured in hours.
 
 <section>
 
-<h2>How much math and programming did we use?  <a name="___sec12"></a></h2>
+<h2>How much math and programming did we use?  <a name="___sec13"></a></h2>
+
+<div class="alert alert-block alert-block alert-text-normal"><b>Math:</b>
 
 <ul>
  <p><li> Plain arithmetics</li>
  <p><li> The concept of a graph (i.e., discrete function in time)</li>
  <p><li> Units</li>
+ <p><li> Greek letters</li>
+</ul>
+<p>
+</div>
+
+
+<p>
+<div class="alert alert-block alert-block alert-text-normal"><b>Programming:</b>
+
+<ul>
  <p><li> Variable</li>
  <p><li> Array</li>
  <p><li> Loop</li>
  <p><li> Plotting</li>
 </ul>
 <p>
+</div>
 
+
+<p>
 
 </section>
 
 
 <section>
 
-<h2>Detour: The standard mathematical approach  <a name="___sec13"></a></h2>
+<h2>Detour: The standard mathematical approach  <a name="___sec14"></a></h2>
 
 We had from intuition established
 
 <p>&nbsp;<br>
 $$
 \begin{align*}
-S(t+\Delta t) &= S(t) - \Delta t\,\beta S(t)I(t)\\
-I(t+\Delta t) &= I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\,\nu I(t)\\
+S(t+\Delta t) &= S(t) - \Delta t\,\beta S(t)I(t)\\ 
+I(t+\Delta t) &= I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\,\nu I(t)\\ 
 R(t+\Delta t) &= R(t) + \Delta t\,\nu R(t)
 \end{align*}
 $$
@@ -576,8 +614,8 @@ divide by \( \Delta t \) and move \( S \), \( I \), and \( R \) to the left-hand
 <p>&nbsp;<br>
 $$
 \begin{align*}
-\frac{S(t+\Delta t) - S(t)}{\Delta t} &= - \beta S(t)I(t)\\
-\frac{I(t+\Delta t) - I(t)}{\Delta t} &= \beta t S(t)I(t) -\nu I(t)\\
+\frac{S(t+\Delta t) - S(t)}{\Delta t} &= - \beta S(t)I(t)\\ 
+\frac{I(t+\Delta t) - I(t)}{\Delta t} &= \beta t S(t)I(t) -\nu I(t)\\ 
 \frac{R(t+\Delta t) - R(t)}{\Delta t} &= \nu R(t)
 \end{align*}
 $$
@@ -591,7 +629,7 @@ $$
 
 <section>
 
-<h2>A derivative arises as \( \Delta t\rightarrow 0 \)  <a name="___sec14"></a></h2>
+<h2>A derivative arises as \( \Delta t\rightarrow 0 \)  <a name="___sec15"></a></h2>
 
 In any calculus book, the derivative of \( S \) at \( t \) is defined as
 
@@ -606,8 +644,8 @@ If we let \( \Delta t\rightarrow 0 \), we get derivatives on the left-hand side:
 <p>&nbsp;<br>
 $$
 \begin{align*}
-S'(t) &= - \beta S(t)I(t)\\
-I'(t) &= \beta t S(t)I(t) -\nu I(t)\\
+S'(t) &= - \beta S(t)I(t)\\ 
+I'(t) &= \beta t S(t)I(t) -\nu I(t)\\ 
 R'(t) &= \nu R(t)
 \end{align*}
 $$
@@ -626,7 +664,7 @@ This is a 3x3 system of differential equations for the functions
 
 <section>
 
-<h2>Bad news: we cannot solve these equations!  <a name="___sec15"></a></h2>
+<h2>Bad news: we cannot solve these equations!  <a name="___sec16"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal"><b>Time to ask a numerical methods expert:</b>
 Replace the derivative with a <em>finite difference</em>, e.g.,
@@ -650,7 +688,7 @@ on a computer!
 
 <section>
 
-<h2>Parameter estimation is needed for predictive modeling  <a name="___sec16"></a></h2>
+<h2>Parameter estimation is needed for predictive modeling  <a name="___sec17"></a></h2>
 
 <ul>
  <p><li> Any small \( \Delta t \) will do</li>
@@ -678,7 +716,7 @@ on a computer!
 
 <section>
 
-<h2>Let us extend the model: no life-long immunity  <a name="___sec17"></a></h2>
+<h2>Let us extend the model: no life-long immunity  <a name="___sec18"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal"><b>Assumption.</b>
 After some time, people in the R category lose the immunity.
@@ -694,9 +732,9 @@ to the S category. (\( 1/\gamma \) is the mean time for immunity.)
 $$
 \begin{align}
 S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \color{red}{\Delta t\,\gamma R^n}
-\tag{7}\\
+\tag{7}\\ 
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
-\tag{8}\\
+\tag{8}\\ 
 R^{n+1} &= R^n + \Delta t\,\nu R^n - \color{red}{\Delta t\,\gamma R^n}
 \tag{9}
 \end{align}
@@ -714,7 +752,7 @@ No complications in the computational model!
 
 <section>
 
-<h2>The effect of loss of immunity  <a name="___sec18"></a></h2>
+<h2>The effect of loss of immunity  <a name="___sec19"></a></h2>
 
 \( 1/\gamma = 50 \) days. \( \beta \) reduced by 2 and 4:
 
@@ -728,7 +766,7 @@ No complications in the computational model!
 
 <section>
 
-<h2>What is the effect of vaccination?  <a name="___sec19"></a></h2>
+<h2>What is the effect of vaccination?  <a name="___sec20"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal"><b>Assumptions.</b>
 A fraction \( p \) of the S category, per time unit, is vaccinated with
@@ -744,11 +782,11 @@ vaccinated category, V. This does not affect the I and R categories.
 $$
 \begin{align}
 S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \Delta t\,\gamma R^n - \color{red}{p\Delta t S^n}
-\tag{10}\\
+\tag{10}\\ 
 V^{n+1} &= V^n + \color{red}{p\Delta t S^n}
-\tag{11}\\
+\tag{11}\\ 
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
-\tag{12}\\
+\tag{12}\\ 
 R^{n+1} &= R^n + \Delta t\,\nu R^n - \Delta t\,\gamma R^n
 \tag{13}
 \end{align}
@@ -766,7 +804,7 @@ Implementation: Just add array for \( V^n \) and add equation.
 
 <section>
 
-<h2>Many possibilities for adjusting the model...  <a name="___sec20"></a></h2>
+<h2>Many possibilities for adjusting the model...  <a name="___sec21"></a></h2>
 
 The effect of vaccination decreases, so we may move people back to
 the S category (term proportional to \( \Delta t V \)).
@@ -781,7 +819,7 @@ the S category (term proportional to \( \Delta t V \)).
 
 <section>
 
-<h2>Effect of adding vaccination  <a name="___sec21"></a></h2>
+<h2>Effect of adding vaccination  <a name="___sec22"></a></h2>
 
 <center><p><img src="fig/SIRV1.png" align="bottom" width=800></p></center>
 
@@ -795,14 +833,14 @@ the S category (term proportional to \( \Delta t V \)).
 
 <section>
 
-<h2>What is the effect of an intensive vaccination campaign?  <a name="___sec22"></a></h2>
+<h2>What is the effect of an intensive vaccination campaign?  <a name="___sec23"></a></h2>
 
 10 times more intense vaccination for 10 days, 6 days after outbreak:
 
 <p>&nbsp;<br>
 $$
 \begin{equation*} p(t) = \left\lbrace\begin{array}{ll}
-0.05,& 6\leq t\leq 15,\\
+0.05,& 6\leq t\leq 15,\\ 
 0,& \hbox{otherwise} \end{array}\right.\end{equation*}
 $$
 <p>&nbsp;<br>
@@ -810,8 +848,10 @@ $$
 
 <p>
 Implementation: Let \( p^n \) be an array as \( V^n \). Set \( p^n=0.05 \) for
-\( n=6\cdot 24/0.1,\ldots, 15\cdot 24/0.1 \) (\( \mbox{days}\cdot 24 \mbox{h per
-day}\Delta t \)).
+\( n=6\cdot 24/0.1,\ldots, 15\cdot 24/0.1 \) (\( \mbox{days}\cdot 24 /\Delta t \), 24 is hours per day).
+
+<p>
+<center><p><img src="fig/p_discont.png" align="bottom" width=400></p></center>
 
 <p>
 
@@ -820,7 +860,7 @@ day}\Delta t \)).
 
 <section>
 
-<h2>Effect of vaccination campaign  <a name="___sec23"></a></h2>
+<h2>Effect of vaccination campaign  <a name="___sec24"></a></h2>
 
 <center><p><img src="fig/SIRV2.png" align="bottom" width=800></p></center>
 
@@ -835,7 +875,7 @@ vaccination period.
 
 <section>
 
-<h2>We can experiment with other campaigns  <a name="___sec24"></a></h2>
+<h2>We can experiment with other campaigns  <a name="___sec25"></a></h2>
 
 
 <table border="0">
@@ -849,7 +889,7 @@ Masks lower \( \beta \):
 <p>&nbsp;<br>
 $$
 \begin{equation*} \beta(t) = \left\lbrace\begin{array}{ll}
-\beta_1,& 0\leq t < 5,\\
+\beta_1,& 0\leq t < 5,\\ 
 \beta_2 < \beta_1,& t \geq 5\end{array}\right.
 \end{equation*}
 $$
@@ -874,7 +914,7 @@ equation models...)
 
 <section>
 
-<h2>And now for something similar: zombification  <a name="___sec25"></a></h2>
+<h2>And now for something similar: zombification  <a name="___sec26"></a></h2>
 
 <center><p><img src="fig/zombie1.jpg" align="bottom" width=900></p></center>
 
@@ -888,7 +928,7 @@ equation models...)
 
 <section>
 
-<h2>Zombie modeling is almost the same as SIR modeling  <a name="___sec26"></a></h2>
+<h2>Zombie modeling is almost the same as SIR modeling  <a name="___sec27"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal"><b>Categories.</b>
 
@@ -915,7 +955,7 @@ Zombie movie: <em>The Night of the Living Dead</em>, Geoerge A. Romero, 1968
 
 <section>
 
-<h2>Dynamics of the zombie SIZR model  <a name="___sec27"></a></h2>
+<h2>Dynamics of the zombie SIZR model  <a name="___sec28"></a></h2>
 
 <center><p><img src="fig/categories_SIZR.png" align="bottom" width=380></p></center>
 
@@ -941,14 +981,14 @@ Zombie movie: <em>The Night of the Living Dead</em>, Geoerge A. Romero, 1968
 
 <section>
 
-<h2>The four equations in the SIZR model for zombification  <a name="___sec28"></a></h2>
+<h2>The four equations in the SIZR model for zombification  <a name="___sec29"></a></h2>
 
 <p>&nbsp;<br>
 $$
 \begin{align*}
-S^{n+1} &= S^n + \Delta t\,\Sigma - \Delta t\,\beta S^nZ - \Delta t\,\delta_S S^n\\
-I^{n+1} &= I^n + \Delta t\,\beta S^nZ^n - \Delta t\,\rho I^n - \Delta t\,\delta_I I^n\\
-Z^{n+1} &= Z^n + \Delta t\,\rho I^n - \Delta t\,\alpha S^nZ^n\\
+S^{n+1} &= S^n + \Delta t\,\Sigma - \Delta t\,\beta S^nZ - \Delta t\,\delta_S S^n\\ 
+I^{n+1} &= I^n + \Delta t\,\beta S^nZ^n - \Delta t\,\rho I^n - \Delta t\,\delta_I I^n\\ 
+Z^{n+1} &= Z^n + \Delta t\,\rho I^n - \Delta t\,\alpha S^nZ^n\\ 
 R^{n+1} &= R^n + \Delta t\,\delta_S S^n  + \Delta t\,\delta_I I^n +
 \Delta t\,\alpha S^nZ^n
 \end{align*}
@@ -978,7 +1018,7 @@ $$
 
 <section>
 
-<h2>Simulate a zombie movie!  <a name="___sec29"></a></h2>
+<h2>Simulate a zombie movie!  <a name="___sec30"></a></h2>
 
 
 <table border="0">
@@ -1034,7 +1074,7 @@ University of Chicago Press, 2013
 
 <section>
 
-<h2>Effective war on zombies  <a name="___sec30"></a></h2>
+<h2>Effective war on zombies  <a name="___sec31"></a></h2>
 
 Introduce attacks on zombies at selected times \( T_0, T_1, \ldots, T_m \).
 
@@ -1065,7 +1105,7 @@ point of attacks (\( T_i \))
 
 <section>
 
-<h2>Summary  <a name="___sec31"></a></h2>
+<h2>Summary  <a name="___sec32"></a></h2>
 
 <ul>
  <p><li> A complex spreading of diseases can be modeled by intuitive, simple
@@ -1083,7 +1123,7 @@ Site: <a href="https://github.com/hplgit/disease-modeling" target="_blank"><tt>h
 <p>
 
 <!-- code=text (!bc sys) typeset with pygments style "native" -->
-<div class="highlight" style="background: #202020"><pre style="font-size: 80%; line-height: 125%">Terminal&gt; git clone https://github.com/hplgit/disease-modeling.git
+<div class="highlight" style="background: #202020"><pre style="font-size: 80%; line-height: 125%">git clone https://github.com/hplgit/disease-modeling.git
 </pre></div>
 <p>
 </div>

@@ -42,6 +42,19 @@ Find and solve equations for $S(t)$, $I(t)$, $R(t)$.
 FIGURE: [fig/categories_SIR, width=400 frac=0.7]
 
 !split
+===== The traditional modeling approach is very mathematical =====
+
+!bblock
+ * Numerous books on mathematical biology treat the SIR model
+ * Quick modeling step (max 2 pages)
+ * Nonlinear differential equation model
+ * Cannot solve the equations, so focus is on discussing
+   stability (eigenvalues), properties, etc.
+ * Very few extensions of the model
+!eblock
+
+
+!split
 ===== $\Delta t\,\beta SI$ people move from S to I in a time inverval $\Delta t$ =====
 
 !bblock S-I interaction:
@@ -247,13 +260,19 @@ FIGURE: [fig/SIR1, width=800]
 !split
 ===== How much math and programming did we use? =====
 
+!bblock Math:
  * Plain arithmetics
  * The concept of a graph (i.e., discrete function in time)
  * Units
+ * Greek letters
+!eblock
+
+!bblock Programming:
  * Variable
  * Array
  * Loop
  * Plotting
+!eblock
 
 !split
 ===== Detour: The standard mathematical approach =====
@@ -316,6 +335,16 @@ which is accurate for small $\Delta t$.
 
 This brings us back to the first model, which we can solve
 on a computer!
+
+% if EXTRA:
+!split
+===== SIR is an ideal model for teaching modeling =====
+
+!bquestion
+``I believe genes are important for spreading of diseases. It's not
+included in the model.''
+!equestion
+% endif
 
 !split
 ===== Parameter estimation is needed for predictive modeling =====
@@ -417,8 +446,9 @@ FIGURE: [fig/SIRV1, width=800 frac=0.8]
 !et
 
 Implementation: Let $p^n$ be an array as $V^n$. Set $p^n=0.05$ for
-$n=6\cdot 24/0.1,\ldots, 15\cdot 24/0.1$ ($\mbox{days}\cdot 24 \mbox{h per
-day}\Delta t$).
+$n=6\cdot 24/0.1,\ldots, 15\cdot 24/0.1$ ($\mbox{days}\cdot 24 /\Delta t$, 24 is hours per day).
+
+FIGURE: [fig/p_discont, width=400 frac=0.7]
 
 !split
 ===== Effect of vaccination campaign =====
@@ -511,7 +541,7 @@ R^{n+1} &= R^n + \Delta t\,\delta_S S^n  + \Delta t\,\delta_I I^n +
 !split
 ===== Simulate a zombie movie! =====
 
-!bslidecell 00 0.5
+!bslidecell 00 0.6
 !bblock Three fundamental phases
  o The initial phase (4 h)
  o The hysteric phase (24 h)
@@ -519,7 +549,7 @@ R^{n+1} &= R^n + \Delta t\,\delta_S S^n  + \Delta t\,\delta_I I^n +
 !eblock
 !eslidecell
 
-!bslidecell 01 0.5
+!bslidecell 01 0.4
 FIGURE: [fig/TNotLD, width=300]
 !eslidecell
 
@@ -570,6 +600,6 @@ point of attacks ($T_i$)
 Site: "`https://github.com/hplgit/disease-modeling`": "https://github.com/hplgit/disease-modeling". Just do
 
 !bc sys
-Terminal> git clone https://github.com/hplgit/disease-modeling.git
+git clone https://github.com/hplgit/disease-modeling.git
 !ec
 !eblock
