@@ -140,7 +140,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Aug 26, 2014</h4></center> <!-- date -->
+<center><h4>Aug 27, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/disease1.jpg" align="bottom" width=400></p></center>
 
@@ -153,7 +153,9 @@ MathJax.Hub.Config({
 
 <h2>We shall model a very complex phenomenon by simple math....  <a name="___sec0"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Assumptions:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Assumptions:</b>
+<p>
 
 <ul>
  <p><li> We have a perfectly mixed population in a confined area</li>
@@ -162,7 +164,6 @@ MathJax.Hub.Config({
  <p><li> We do not consider individuals, just a grand mix of them<br />
    (cf. statistical mechanics vs thermodynamics)</li>
 </ul>
-<p>
 </div>
 
 
@@ -179,6 +180,16 @@ diseases modeled are flu, measles, swine flu, HIV, ...
 
 <p>
 
+<p class="fragment">
+
+All these slides and associated programs are available from
+<a href="https://github.com/hplgit/disease-modeling" target="_blank"><tt>https://github.com/hplgit/disease-modeling</tt></a>.
+
+</p>
+
+
+<p>
+
 </section>
 
 
@@ -186,25 +197,30 @@ diseases modeled are flu, measles, swine flu, HIV, ...
 
 <h2>We keep track of 3 categories  <a name="___sec1"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Categories (SIR model):</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Categories (SIR model):</b>
+<p>
 
 <ul>
  <p><li> <b>S</b>: susceptibles - who can get the disease</li>
  <p><li> <b>I</b>: infected - who have developed the disease and infect susceptibles</li>
  <p><li> <b>R</b>: recovered - who have recovered and become immune</li>
 </ul>
-<p>
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b>Mathematical quantities:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Mathematical quantities:</b>
+<p>
 \( S(t) \), \( I(t) \), \( R(t) \) (no of people).
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b>Goal:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Goal:</b>
+<p>
 Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
 </div>
 
@@ -221,7 +237,9 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
 
 <h2>The traditional modeling approach is very mathematical  <a name="___sec2"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b></b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b></b>
+<p>
 
 <ul>
  <p><li> Numerous books on mathematical biology treat the SIR model</li>
@@ -231,7 +249,6 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
    stability (eigenvalues), properties, etc.</li>
  <p><li> Very few extensions of the model</li>
 </ul>
-<p>
 </div>
 
 
@@ -244,7 +261,9 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
 
 <h2>\( \Delta t\,\beta SI \) people move from S to I in a time inverval \( \Delta t \)  <a name="___sec3"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>S-I interaction:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>S-I interaction:</b>
+<p>
 
 <ul>
   <p><li> In a mix of S and I people, there are \( SI \) possible pairs</li>
@@ -254,12 +273,13 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
   <p><li> The loss \( \Delta t\,\beta SI \) in the S catogory is a corresponding
     gain in the I category</li>
 </ul>
-<p>
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-small"><b>Remark.</b>
+<div class="alert alert-block alert-block alert-text-small">
+<b>Remark.</b>
+<p>
 It is reasonable that the fraction depends on \( \Delta t \)
 (twice as many infected in \( 2\Delta t \) as in \( \Delta t \)).
 \( \beta \) is some unknown parameter we must measure, supposed to not
@@ -300,7 +320,9 @@ $$ I(t+\Delta t) = I(t) + \Delta t\,\beta S(t)I(t)$$
 
 <h2>Modeling the interaction between R and I  <a name="___sec5"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>R-I interaction:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>R-I interaction:</b>
+<p>
 
 <ul>
  <p><li> After some days, the infected has recovered and moves to the R category</li>
@@ -308,7 +330,6 @@ $$ I(t+\Delta t) = I(t) + \Delta t\,\beta S(t)I(t)$$
    a fraction \( \Delta t\,\nu \) of the infected are removed
    (\( \nu \) must be measured)</li>
 </ul>
-<p>
 </div>
 
 
@@ -560,7 +581,9 @@ show()
 
 <h2>How much math and programming did we use?  <a name="___sec13"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Math:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Math:</b>
+<p>
 
 <ul>
  <p><li> Plain arithmetics</li>
@@ -568,12 +591,13 @@ show()
  <p><li> Units</li>
  <p><li> Greek letters</li>
 </ul>
-<p>
 </div>
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-normal"><b>Programming:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Programming:</b>
+<p>
 
 <ul>
  <p><li> Variable</li>
@@ -581,7 +605,6 @@ show()
  <p><li> Loop</li>
  <p><li> Plotting</li>
 </ul>
-<p>
 </div>
 
 
@@ -608,8 +631,8 @@ $$
 
 
 <p>
-The mathematician will now make a <em>differential equations</em>. First,
-divide by \( \Delta t \) and move \( S \), \( I \), and \( R \) to the left-hand side:
+The mathematician will now make <em>differential equations</em>.
+Divide by \( \Delta t \) and rearrange:
 
 <p>&nbsp;<br>
 $$
@@ -666,7 +689,9 @@ This is a 3x3 system of differential equations for the functions
 
 <h2>Bad news: we cannot solve these equations!  <a name="___sec16"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Time to ask a numerical methods expert:</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Time to ask a numerical methods expert:</b>
+<p>
 Replace the derivative with a <em>finite difference</em>, e.g.,
 
 <p>&nbsp;<br>
@@ -698,14 +723,15 @@ on a computer!
 </ul>
 <p>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>So, what if we don't know \( \beta \)?</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>So, what if we don't know \( \beta \)?</b>
+<p>
 
 <ul>
  <p><li> Can still learn about the <em>dynamics</em> of diseases</li>
  <p><li> Can find the sensitivity to and influence of \( \beta \)</li>
  <p><li> Can apply <em>parameter estimation</em> procedures to fit \( \beta \) to data</li>
 </ul>
-<p>
 </div>
 
 
@@ -718,7 +744,9 @@ on a computer!
 
 <h2>Let us extend the model: no life-long immunity  <a name="___sec18"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Assumption.</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Assumption.</b>
+<p>
 After some time, people in the R category lose the immunity.
 In a small time \( \Delta t \) this gives a leakage \( \Delta t\,\gamma R \)
 to the S category. (\( 1/\gamma \) is the mean time for immunity.)
@@ -768,7 +796,9 @@ No complications in the computational model!
 
 <h2>What is the effect of vaccination?  <a name="___sec20"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Assumptions.</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Assumptions.</b>
+<p>
 A fraction \( p \) of the S category, per time unit, is vaccinated with
 success. Then in time \( \Delta t \), \( p\Delta t S \) will move to a
 vaccinated category, V. This does not affect the I and R categories.
@@ -795,6 +825,7 @@ $$
 
 
 <p>
+<!-- Too much for Beamer... -->
 Implementation: Just add array for \( V^n \) and add equation.
 
 <p>
@@ -884,7 +915,7 @@ vaccination period.
 <center><p><img src="fig/disease2.jpg" align="bottom" width=400></p></center>
 </td>
 <td class="padding">
-Masks lower \( \beta \):
+Wearing masks lowers \( \beta \):
 
 <p>&nbsp;<br>
 $$
@@ -914,7 +945,7 @@ equation models...)
 
 <section>
 
-<h2>And now for something similar: zombification  <a name="___sec26"></a></h2>
+<h2>And now for something similar: zombification!  <a name="___sec26"></a></h2>
 
 <center><p><img src="fig/zombie1.jpg" align="bottom" width=900></p></center>
 
@@ -930,7 +961,9 @@ equation models...)
 
 <h2>Zombie modeling is almost the same as SIR modeling  <a name="___sec27"></a></h2>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>Categories.</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Categories.</b>
+<p>
 
 <ol>
  <p><li> S: susceptible humans who can become zombies</li>
@@ -938,7 +971,6 @@ equation models...)
  <p><li> Z: zombies</li>
  <p><li> R: removed individuals, either conquered zombies or dead humans</li>
 </ol>
-<p>
 </div>
 
 
@@ -997,7 +1029,9 @@ $$
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-small"><b>Interpretation of parameters:</b>
+<div class="alert alert-block alert-block alert-text-small">
+<b>Interpretation of parameters:</b>
+<p>
 
 <ul>
   <p><li> \( \Sigma \): no of new humans brought into the zombified area per unit time.</li>
@@ -1007,7 +1041,6 @@ $$
   <p><li> \( \rho \): the probability that an infected human is turned into a zombie, during a unit time interval.</li>
   <p><li> \( \alpha \): the probability that, during a unit time interval, a theoretically possible human-zombie pair fights and the human kills the zombie.</li>
 </ul>
-<p>
 </div>
 
 
@@ -1024,14 +1057,15 @@ $$
 <table border="0">
 <tr>
 <td class="padding">
-<div class="alert alert-block alert-block alert-text-normal"><b>Three fundamental phases.</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>Three fundamental phases.</b>
+<p>
 
 <ol>
 <p><li> The initial phase (4 h)</li>
 <p><li> The hysteric phase (24 h)</li>
 <p><li> The counter attack phase (5 h)</li>
 </ol>
-<p>
 </div>
 
 </td>
@@ -1117,7 +1151,9 @@ point of attacks (\( T_i \))
 </ul>
 <p>
 
-<div class="alert alert-block alert-block alert-text-normal"><b>All these slides and associated programs are available.</b>
+<div class="alert alert-block alert-block alert-text-normal">
+<b>All these slides and associated programs are available.</b>
+<p>
 Site: <a href="https://github.com/hplgit/disease-modeling" target="_blank"><tt>https://github.com/hplgit/disease-modeling</tt></a>. Just do
 
 <p>
@@ -1125,7 +1161,7 @@ Site: <a href="https://github.com/hplgit/disease-modeling" target="_blank"><tt>h
 <!-- code=text (!bc sys) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="font-size: 80%; line-height: 125%">git clone https://github.com/hplgit/disease-modeling.git
 </pre></div>
-<p>
+
 </div>
 
 

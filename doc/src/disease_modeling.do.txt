@@ -3,7 +3,8 @@ TITLE: Modeling the Spreading of Diseases
 AUTHOR: Hans Petter Langtangen at Center for Biomedical Computing, Simula Research Laboratory & University of Oslo, Dept. of Informatics
 DATE: today
 
-FIGURE: [fig/disease1, width=400]
+FIGURE: [fig/disease1, width=400 frac=0.5]
+
 
 !split
 ===== We shall model a very complex phenomenon by simple math.... =====
@@ -20,6 +21,11 @@ FIGURE: [fig/disease1, width=400]
 We consider very simple models, but these can be extended to full
 models that are used world-wide by health authorities. Typical
 diseases modeled are flu, measles, swine flu, HIV, ...
+!epop
+
+!bpop
+All these slides and associated programs are available from
+"`https://github.com/hplgit/disease-modeling`": "https://github.com/hplgit/disease-modeling".
 !epop
 
 !split
@@ -39,7 +45,7 @@ $S(t)$, $I(t)$, $R(t)$ (no of people).
 Find and solve equations for $S(t)$, $I(t)$, $R(t)$.
 !eblock
 
-FIGURE: [fig/categories_SIR, width=400 frac=0.7]
+FIGURE: [fig/categories_SIR, width=400 frac=0.5]
 
 !split
 ===== The traditional modeling approach is very mathematical =====
@@ -125,7 +131,7 @@ label{SIR1:R}
 \end{align}
 !et
 
-FIGURE: [fig/categories_SIR, width=400 frac=0.7]
+FIGURE: [fig/categories_SIR, width=400 frac=0.5]
 
 Before we can compute with these, we must
 
@@ -287,8 +293,8 @@ R(t+\Delta t) &= R(t) + \Delta t\,\nu R(t)
 \end{align*}
 !et
 
-The mathematician will now make a *differential equations*. First,
-divide by $\Delta t$ and move $S$, $I$, and $R$ to the left-hand side:
+The mathematician will now make *differential equations*.
+Divide by $\Delta t$ and rearrange:
 
 !bt
 \begin{align*}
@@ -369,7 +375,7 @@ In a small time $\Delta t$ this gives a leakage $\Delta t\,\gamma R$
 to the S category. ($1/\gamma$ is the mean time for immunity.)
 !eblock
 
-FIGURE: [fig/categories_SIR_feedback, width=400 frac=0.7]
+FIGURE: [fig/categories_SIR_feedback, width=400 frac=0.5]
 
 !bt
 \begin{align}
@@ -400,7 +406,7 @@ success. Then in time $\Delta t$, $p\Delta t S$ will move to a
 vaccinated category, V. This does not affect the I and R categories.
 !eblock
 
-FIGURE: [fig/categories_SIRV, width=400 frac=0.4]
+FIGURE: [fig/categories_SIRV, width=400 frac=0.3]
 
 !bt
 \begin{align}
@@ -415,7 +421,10 @@ label{SIR3:R}
 \end{align}
 !et
 
+# #if FORMAT not in ("latex", "pdflatex")
+# Too much for Beamer...
 Implementation: Just add array for $V^n$ and add equation.
+# #endif
 
 !split
 ===== Many possibilities for adjusting the model... =====
@@ -423,7 +432,7 @@ Implementation: Just add array for $V^n$ and add equation.
 The effect of vaccination decreases, so we may move people back to
 the S category (term proportional to $\Delta t V$).
 
-FIGURE: [fig/categories_SIRV_feedback, width=400 frac=0.7]
+FIGURE: [fig/categories_SIRV_feedback, width=400 frac=0.5]
 
 
 !split
@@ -448,7 +457,7 @@ FIGURE: [fig/SIRV1, width=800 frac=0.8]
 Implementation: Let $p^n$ be an array as $V^n$. Set $p^n=0.05$ for
 $n=6\cdot 24/0.1,\ldots, 15\cdot 24/0.1$ ($\mbox{days}\cdot 24 /\Delta t$, 24 is hours per day).
 
-FIGURE: [fig/p_discont, width=400 frac=0.7]
+FIGURE: [fig/p_discont, width=400 frac=0.5]
 
 !split
 ===== Effect of vaccination campaign =====
@@ -466,7 +475,7 @@ FIGURE: [fig/disease2.jpg, width=400]
 !eslidecell
 
 !bslidecell 01 0.7
-Masks lower $\beta$:
+Wearing masks lowers $\beta$:
 
 !bt
 \begin{equation*} \beta(t) = \left\lbrace\begin{array}{ll}
@@ -480,7 +489,7 @@ equation models...)
 !eslidecell
 
 !split
-===== And now for something similar: zombification =====
+===== And now for something similar: zombification! =====
 
 
 FIGURE: [fig/zombie1, width=900]

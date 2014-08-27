@@ -56,7 +56,7 @@ system doconce split_html $html.html
 html=${name}-1
 system doconce format html $name --html_style=bloodish --html_links_in_new_window --html_output=$html $opt
 # Add space between splits
-system doconce split_html $name --method=space8
+system doconce split_html $html.html --method=space8
 
 # LaTeX documents
 system doconce format pdflatex $name --minted_latex_style=trac $opt
