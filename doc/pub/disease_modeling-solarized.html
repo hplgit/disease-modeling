@@ -1,18 +1,18 @@
 <!--
-Automatically generated HTML file from Doconce source
+Automatically generated HTML file from DocOnce source
 (https://github.com/hplgit/doconce/)
 -->
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Modeling the Spreading of Diseases">
 
-
+<title>Modeling the Spreading of Diseases</title>
 
 
 <link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="http://www.peterhaschke.com/assets/highlight.pack.js"></script>
+<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -50,6 +50,7 @@ h1 {color: #b58900;}  /* yellow */
 div { text-align: justify; text-justify: inter-word; }
 </style>
 
+
 </head>
 
 <!-- tocinfo
@@ -58,12 +59,15 @@ div { text-align: justify; text-justify: inter-word; }
                2,
                None,
                '___sec0'),
-              (u' We keep track of 3 categories ', 2, None, '___sec1'),
-              (u' The traditional modeling approach is very mathematical ',
+              (u' We keep track of 3 categories in the SIR model ',
+               2,
+               None,
+               '___sec1'),
+              (u' The traditional modeling approach is very mathematical - our idea is to model, program and experiment ',
                2,
                None,
                '___sec2'),
-              (u' $\\Delta t\\,\\beta SI$ people move from S to I in a time inverval $\\Delta t$ ',
+              (u' Dynamics in a time interval $\\Delta t$: $\\Delta t\\,\\beta SI$ people move from S to I ',
                2,
                None,
                '___sec3'),
@@ -172,7 +176,6 @@ MathJax.Hub.Config({
 
 <!-- TITLE: Mathematical Modeling of the Spreading of Diseases -->
 
-<title>Modeling the Spreading of Diseases</title>
 
 <center><h1>Modeling the Spreading of Diseases</h1></center>  <!-- document title -->
 
@@ -190,7 +193,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>
-<center><h4>Aug 27, 2014</h4></center> <!-- date -->
+<center><h4>Sep 18, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/disease1.jpg" align="bottom" width=400></p></center>
 
@@ -204,9 +207,8 @@ MathJax.Hub.Config({
 <p>
 
 <ul>
- <li> We have a perfectly mixed population in a confined area</li>
- <li> We do not consider spatial movements, just how the disease
-   evolves in time</li>
+ <li> We consider a perfectly mixed population in a confined area</li>
+ <li> No spatial transport, just temporal evolution</li>
  <li> We do not consider individuals, just a grand mix of them<br />
    (cf. statistical mechanics vs thermodynamics)</li>
 </ul>
@@ -215,9 +217,14 @@ MathJax.Hub.Config({
 
 <p>
 <!-- !bpop -->
+<div class="alert alert-block alert-block alert-text-small">
+<b></b>
+<p>
 We consider very simple models, but these can be extended to full
 models that are used world-wide by health authorities. Typical
 diseases modeled are flu, measles, swine flu, HIV, ...
+</div>
+
 <!-- !epop -->
 
 <p>
@@ -229,10 +236,10 @@ All these slides and associated programs are available from
 <p>
 <!-- !split -->
 
-<h2>We keep track of 3 categories  <a name="___sec1"></a></h2>
+<h2>We keep track of 3 categories in the SIR model  <a name="___sec1"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Categories (SIR model):</b>
+<b></b>
 <p>
 
 <ul>
@@ -247,7 +254,7 @@ All these slides and associated programs are available from
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Mathematical quantities:</b>
 <p>
-\( S(t) \), \( I(t) \), \( R(t) \) (no of people).
+\( S(t) \), \( I(t) \), \( R(t) \): no of people in each category
 </div>
 
 
@@ -255,7 +262,7 @@ All these slides and associated programs are available from
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Goal:</b>
 <p>
-Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
+Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \)
 </div>
 
 
@@ -265,7 +272,7 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
 <p>
 <!-- !split -->
 
-<h2>The traditional modeling approach is very mathematical  <a name="___sec2"></a></h2>
+<h2>The traditional modeling approach is very mathematical - our idea is to model, program and experiment  <a name="___sec2"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -276,8 +283,8 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
  <li> Quick modeling step (max 2 pages)</li>
  <li> Nonlinear differential equation model</li>
  <li> Cannot solve the equations, so focus is on discussing
-   stability (eigenvalues), properties, etc.</li>
- <li> Very few extensions of the model</li>
+   stability (eigenvalues), qualitative properties, etc.</li>
+ <li> Very few extensions of the model to real-life situations</li>
 </ul>
 </div>
 
@@ -285,7 +292,7 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
 <p>
 <!-- !split -->
 
-<h2>\( \Delta t\,\beta SI \) people move from S to I in a time inverval \( \Delta t \)  <a name="___sec3"></a></h2>
+<h2>Dynamics in a time interval \( \Delta t \): \( \Delta t\,\beta SI \) people move from S to I  <a name="___sec3"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b>S-I interaction:</b>
@@ -303,6 +310,7 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
 
 
 <p>
+<!-- !bpop -->
 <div class="alert alert-block alert-block alert-text-small">
 <b>Remark.</b>
 <p>
@@ -310,15 +318,18 @@ It is reasonable that the fraction depends on \( \Delta t \)
 (twice as many infected in \( 2\Delta t \) as in \( \Delta t \)).
 \( \beta \) is some unknown parameter we must measure, supposed to not
 depend on \( \Delta t \), but maybe time \( t \).
+\( \beta \) lumps <em>a lot</em> of biological and sociological effects into
+one number.
 </div>
 
+<!-- !epop -->
 
 <p>
 <!-- !split -->
 
 <h2>For practical calculations, we must express the S-I interaction with symbols  <a name="___sec4"></a></h2>
 
-Loss in \( S(t) \):
+Loss in \( S(t) \) from time \( t \) to \( t+\Delta t \):
 
 $$ S(t+\Delta t) = S(t) - \Delta t\,\beta S(t)I(t)$$
 
@@ -454,11 +465,12 @@ But this is getting boring! Let's ask a computer to do the work!
 
 <h2>First, some handy notation  <a name="___sec9"></a></h2>
 
-\( S^n = S(n\Delta t) \),
-\( I^n = I(n\Delta t) \), \( R^n = R(n\Delta t) \).
+$$ S^n = S(n\Delta t),\quad I^n = I(n\Delta t),\quad R^n = R(n\Delta t)\]
+\[ S^{n+1} = S((n+1)\Delta t),\quad I^{n+1} = I((n+1)\Delta t),\quad R^{n+1} = R((n+1)\Delta t)$$
+
 
 <p>
-The equations can now be written as
+The equations can now be written more compactly (and computer friendly):
 
 $$
 \begin{align}
@@ -501,14 +513,11 @@ R = zeros(N+<span style="color: #B452CD">1</span>)
 
 <h2>Here is the complete program  <a name="___sec11"></a></h2>
 
-Let time be measured in hours.
-
-<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">beta = <span style="color: #B452CD">0.0013</span>
 nu =<span style="color: #B452CD">0.8333</span>
-dt = <span style="color: #B452CD">0.1</span>             <span style="color: #228B22"># 6 min</span>
+dt = <span style="color: #B452CD">0.1</span>             <span style="color: #228B22"># 6 min (time measured in hours)</span>
 D = <span style="color: #B452CD">30</span>               <span style="color: #228B22"># simulate for D days</span>
 N = <span style="color: #658b00">int</span>(D*<span style="color: #B452CD">24</span>/dt)     <span style="color: #228B22"># corresponding no of hours</span>
 
@@ -688,11 +697,11 @@ to the S category. (\( 1/\gamma \) is the mean time for immunity.)
 
 $$
 \begin{align}
-S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \color{red}{\Delta t\,\gamma R^n}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + {\color{red}\Delta t\,\gamma R^n}
 \label{SIR2:S}\\ 
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
 \label{SIR2:I}\\ 
-R^{n+1} &= R^n + \Delta t\,\nu R^n - \color{red}{\Delta t\,\gamma R^n}
+R^{n+1} &= R^n + \Delta t\,\nu R^n - {\color{red}\Delta t\,\gamma R^n}
 \label{SIR2:R}
 \end{align}
 $$
@@ -706,7 +715,7 @@ No complications in the computational model!
 
 <h2>The effect of loss of immunity  <a name="___sec19"></a></h2>
 
-\( 1/\gamma = 50 \) days. \( \beta \) reduced by 2 and 4:
+\( 1/\gamma = 50 \) days. \( \beta \) reduced by 2 and 4 (left and right, resp.):
 
 <p>
 <center><p><img src="fig/SIR2.png" align="bottom" width=950></p></center>
@@ -730,9 +739,9 @@ vaccinated category, V. This does not affect the I and R categories.
 
 $$
 \begin{align}
-S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \Delta t\,\gamma R^n - \color{red}{p\Delta t S^n}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \Delta t\,\gamma R^n - {\color{red}p\Delta t S^n}
 \label{SIR3:S}\\ 
-V^{n+1} &= V^n + \color{red}{p\Delta t S^n}
+V^{n+1} &= V^n + {\color{red}p\Delta t S^n}
 \label{SIR3:V}\\ 
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
 \label{SIR3:I}\\ 
@@ -751,7 +760,7 @@ Implementation: Just add array for \( V^n \) and add equation.
 
 <h2>Many possibilities for adjusting the model...  <a name="___sec21"></a></h2>
 
-The effect of vaccination decreases, so we may move people back to
+The effect of vaccination decreases over time, so we may move people back to
 the S category (term proportional to \( \Delta t V \)).
 
 <p>
@@ -793,13 +802,17 @@ Implementation: Let \( p^n \) be an array as \( V^n \). Set \( p^n=0.05 \) for
 
 <h2>Effect of vaccination campaign  <a name="___sec24"></a></h2>
 
-<center><p><img src="fig/SIRV2.png" align="bottom" width=800></p></center>
+<center><p><img src="fig/SIRV2.png" align="bottom" width=500></p></center>
 
 <p>
-Could now let the computer run a lot of cases and find the optimal
-vaccination period.
+Note:
 
-<p>
+<ul>
+ <li> Mathematicians would be scared by the cusps on the curves...</li>
+ <li> Could now let the computer run a lot of cases and find the optimal
+   vaccination period</li>
+</ul>
+
 <!-- !split -->
 
 <h2>We can experiment with other campaigns  <a name="___sec25"></a></h2>
@@ -944,7 +957,7 @@ take on different constant values in different time intervals.
 
 <p>
 <!-- !bpop -->
-H. P. Langtangen and K.-A. Mardal and P. Røtnes:
+H. P. Langtangen, K.-A. Mardal and P. Røtnes:
 Escaping the Zombie Threat by Mathematics, in
 A. Whelan et al.: <em>Zombies in the Academy - Living Death in Higher Education</em>,
 University of Chicago Press, 2013
@@ -971,7 +984,7 @@ $$
 
 <p>
 Must experiment with values of \( a \) (strength), \( \sigma \) (duration is \( 6\sigma \)),
-point of attacks (\( T_i \))
+point of attacks (\( T_i \)) - with proper values humans beat the zombies!
 
 <p>
 <!-- !split -->

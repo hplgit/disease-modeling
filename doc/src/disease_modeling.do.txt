@@ -10,17 +10,18 @@ FIGURE: [fig/disease1, width=400 frac=0.5]
 ===== We shall model a very complex phenomenon by simple math.... =====
 
 !bblock Assumptions:
- * We have a perfectly mixed population in a confined area
- * We do not consider spatial movements, just how the disease
-   evolves in time
+ * We consider a perfectly mixed population in a confined area
+ * No spatial transport, just temporal evolution
  * We do not consider individuals, just a grand mix of them<linebreak>
    (cf. statistical mechanics vs thermodynamics)
 !eblock
 
 !bpop
+!bblock (small)
 We consider very simple models, but these can be extended to full
 models that are used world-wide by health authorities. Typical
 diseases modeled are flu, measles, swine flu, HIV, ...
+!eblock
 !epop
 
 !bpop
@@ -29,39 +30,39 @@ All these slides and associated programs are available from
 !epop
 
 !split
-===== We keep track of 3 categories =====
+===== We keep track of 3 categories in the SIR model =====
 
-!bblock Categories (SIR model):
+!bblock
  * _S_: susceptibles - who can get the disease
  * _I_: infected - who have developed the disease and infect susceptibles
  * _R_: recovered - who have recovered and become immune
 !eblock
 
 !bblock Mathematical quantities:
-$S(t)$, $I(t)$, $R(t)$ (no of people).
+$S(t)$, $I(t)$, $R(t)$: no of people in each category
 !eblock
 
 !bblock Goal:
-Find and solve equations for $S(t)$, $I(t)$, $R(t)$.
+Find and solve equations for $S(t)$, $I(t)$, $R(t)$
 !eblock
 
 FIGURE: [fig/categories_SIR, width=400 frac=0.5]
 
 !split
-===== The traditional modeling approach is very mathematical =====
+===== The traditional modeling approach is very mathematical - our idea is to model, program and experiment =====
 
 !bblock
  * Numerous books on mathematical biology treat the SIR model
  * Quick modeling step (max 2 pages)
  * Nonlinear differential equation model
  * Cannot solve the equations, so focus is on discussing
-   stability (eigenvalues), properties, etc.
- * Very few extensions of the model
+   stability (eigenvalues), qualitative properties, etc.
+ * Very few extensions of the model to real-life situations
 !eblock
 
 
 !split
-===== $\Delta t\,\beta SI$ people move from S to I in a time inverval $\Delta t$ =====
+===== Dynamics in a time interval $\Delta t$: $\Delta t\,\beta SI$ people move from S to I =====
 
 !bblock S-I interaction:
   * In a mix of S and I people, there are $SI$ possible pairs
@@ -72,17 +73,21 @@ FIGURE: [fig/categories_SIR, width=400 frac=0.5]
     gain in the I category
 !eblock
 
+!bpop
 !bblock (small) Remark
 It is reasonable that the fraction depends on $\Delta t$
 (twice as many infected in $2\Delta t$ as in $\Delta t$).
 $\beta$ is some unknown parameter we must measure, supposed to not
 depend on $\Delta t$, but maybe time $t$.
+$\beta$ lumps *a lot* of biological and sociological effects into
+one number.
 !eblock
+!epop
 
 !split
 ===== For practical calculations, we must express the S-I interaction with symbols =====
 
-Loss in $S(t)$:
+Loss in $S(t)$ from time $t$ to $t+\Delta t$:
 
 !bt
 \[ S(t+\Delta t) = S(t) - \Delta t\,\beta S(t)I(t)\]
@@ -190,10 +195,15 @@ But this is getting boring! Let's ask a computer to do the work!
 !split
 ===== First, some handy notation =====
 
-$S^n = S(n\Delta t)$,
-$I^n = I(n\Delta t)$, $R^n = R(n\Delta t)$.
+!bt
+\[ S^n = S(n\Delta t),\quad I^n = I(n\Delta t),\quad R^n = R(n\Delta t)\]
+!et
 
-The equations can now be written as
+!bt
+\[ S^{n+1} = S((n+1)\Delta t),\quad I^{n+1} = I((n+1)\Delta t),\quad R^{n+1} = R((n+1)\Delta t)\]
+!et
+
+The equations can now be written more compactly (and computer friendly):
 
 !bt
 \begin{align}
@@ -229,12 +239,10 @@ for n in range(N):
 !split
 ===== Here is the complete program =====
 
-Let time be measured in hours.
-
 !bc pycod
 beta = 0.0013
 nu =0.8333
-dt = 0.1             # 6 min
+dt = 0.1             # 6 min (time measured in hours)
 D = 30               # simulate for D days
 N = int(D*24/dt)     # corresponding no of hours
 
@@ -379,11 +387,11 @@ FIGURE: [fig/categories_SIR_feedback, width=400 frac=0.5]
 
 !bt
 \begin{align}
-S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \color{red}{\Delta t\,\gamma R^n}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + {\color{red}\Delta t\,\gamma R^n}
 label{SIR2:S}\\
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
 label{SIR2:I}\\
-R^{n+1} &= R^n + \Delta t\,\nu R^n - \color{red}{\Delta t\,\gamma R^n}
+R^{n+1} &= R^n + \Delta t\,\nu R^n - {\color{red}\Delta t\,\gamma R^n}
 label{SIR2:R}
 \end{align}
 !et
@@ -393,7 +401,7 @@ No complications in the computational model!
 !split
 ===== The effect of loss of immunity =====
 
-$1/\gamma = 50$ days. $\beta$ reduced by 2 and 4:
+$1/\gamma = 50$ days. $\beta$ reduced by 2 and 4 (left and right, resp.):
 
 FIGURE: [fig/SIR2, width=950]
 
@@ -410,9 +418,9 @@ FIGURE: [fig/categories_SIRV, width=400 frac=0.3]
 
 !bt
 \begin{align}
-S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \Delta t\,\gamma R^n - \color{red}{p\Delta t S^n}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \Delta t\,\gamma R^n - {\color{red}p\Delta t S^n}
 label{SIR3:S}\\
-V^{n+1} &= V^n + \color{red}{p\Delta t S^n}
+V^{n+1} &= V^n + {\color{red}p\Delta t S^n}
 label{SIR3:V}\\
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
 label{SIR3:I}\\
@@ -429,7 +437,7 @@ Implementation: Just add array for $V^n$ and add equation.
 !split
 ===== Many possibilities for adjusting the model... =====
 
-The effect of vaccination decreases, so we may move people back to
+The effect of vaccination decreases over time, so we may move people back to
 the S category (term proportional to $\Delta t V$).
 
 FIGURE: [fig/categories_SIRV_feedback, width=400 frac=0.5]
@@ -462,10 +470,13 @@ FIGURE: [fig/p_discont, width=400 frac=0.5]
 !split
 ===== Effect of vaccination campaign =====
 
-FIGURE: [fig/SIRV2, width=800 frac=0.8]
+FIGURE: [fig/SIRV2, width=500 frac=0.6]
 
-Could now let the computer run a lot of cases and find the optimal
-vaccination period.
+Note:
+
+ * Mathematicians would be scared by the cusps on the curves...
+ * Could now let the computer run a lot of cases and find the optimal
+   vaccination period
 
 !split
 ===== We can experiment with other campaigns =====
@@ -568,7 +579,7 @@ take on different constant values in different time intervals.
 !epop
 
 !bpop
-H. P. Langtangen and K.-A. Mardal and P. Røtnes:
+H. P. Langtangen, K.-A. Mardal and P. Røtnes:
 Escaping the Zombie Threat by Mathematics, in
 A. Whelan et al.: *Zombies in the Academy - Living Death in Higher Education*,
 University of Chicago Press, 2013
@@ -593,7 +604,7 @@ Gaussian functions (peaks) in time:
 !et
 
 Must experiment with values of $a$ (strength), $\sigma$ (duration is $6\sigma$),
-point of attacks ($T_i$)
+point of attacks ($T_i$) - with proper values humans beat the zombies!
 
 !split
 ===== Summary =====

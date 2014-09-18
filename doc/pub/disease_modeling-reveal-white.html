@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Doconce: https://github.com/hplgit/doconce/" />
+<meta name="generator" content="DocOnce: https://github.com/hplgit/doconce/" />
 <meta name="description" content="Modeling the Spreading of Diseases">
 
+<title>Modeling the Spreading of Diseases</title>
 
 
 
@@ -122,7 +123,6 @@ MathJax.Hub.Config({
 
 <!-- TITLE: Mathematical Modeling of the Spreading of Diseases -->
 
-<title>Modeling the Spreading of Diseases</title>
 
 <center><h1>Modeling the Spreading of Diseases</h1></center>  <!-- document title -->
 
@@ -140,7 +140,7 @@ MathJax.Hub.Config({
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>&nbsp;<br>
-<center><h4>Aug 27, 2014</h4></center> <!-- date -->
+<center><h4>Sep 18, 2014</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/disease1.jpg" align="bottom" width=400></p></center>
 
@@ -158,9 +158,8 @@ MathJax.Hub.Config({
 <p>
 
 <ul>
- <p><li> We have a perfectly mixed population in a confined area</li>
- <p><li> We do not consider spatial movements, just how the disease
-   evolves in time</li>
+ <p><li> We consider a perfectly mixed population in a confined area</li>
+ <p><li> No spatial transport, just temporal evolution</li>
  <p><li> We do not consider individuals, just a grand mix of them<br />
    (cf. statistical mechanics vs thermodynamics)</li>
 </ul>
@@ -171,9 +170,14 @@ MathJax.Hub.Config({
 
 <p class="fragment">
 
+<div class="fragment alert alert-block alert-block alert-text-small">
+<b></b>
+
 We consider very simple models, but these can be extended to full
 models that are used world-wide by health authorities. Typical
 diseases modeled are flu, measles, swine flu, HIV, ...
+</div>
+
 
 </p>
 
@@ -195,10 +199,10 @@ All these slides and associated programs are available from
 
 <section>
 
-<h2>We keep track of 3 categories  <a name="___sec1"></a></h2>
+<h2>We keep track of 3 categories in the SIR model  <a name="___sec1"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
-<b>Categories (SIR model):</b>
+<b></b>
 <p>
 
 <ul>
@@ -213,7 +217,7 @@ All these slides and associated programs are available from
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Mathematical quantities:</b>
 <p>
-\( S(t) \), \( I(t) \), \( R(t) \) (no of people).
+\( S(t) \), \( I(t) \), \( R(t) \): no of people in each category
 </div>
 
 
@@ -221,7 +225,7 @@ All these slides and associated programs are available from
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Goal:</b>
 <p>
-Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
+Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \)
 </div>
 
 
@@ -235,7 +239,7 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
 
 <section>
 
-<h2>The traditional modeling approach is very mathematical  <a name="___sec2"></a></h2>
+<h2>The traditional modeling approach is very mathematical - our idea is to model, program and experiment  <a name="___sec2"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
@@ -246,8 +250,8 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
  <p><li> Quick modeling step (max 2 pages)</li>
  <p><li> Nonlinear differential equation model</li>
  <p><li> Cannot solve the equations, so focus is on discussing
-   stability (eigenvalues), properties, etc.</li>
- <p><li> Very few extensions of the model</li>
+   stability (eigenvalues), qualitative properties, etc.</li>
+ <p><li> Very few extensions of the model to real-life situations</li>
 </ul>
 </div>
 
@@ -259,7 +263,7 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
 
 <section>
 
-<h2>\( \Delta t\,\beta SI \) people move from S to I in a time inverval \( \Delta t \)  <a name="___sec3"></a></h2>
+<h2>Dynamics in a time interval \( \Delta t \): \( \Delta t\,\beta SI \) people move from S to I  <a name="___sec3"></a></h2>
 
 <div class="alert alert-block alert-block alert-text-normal">
 <b>S-I interaction:</b>
@@ -277,14 +281,22 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \).
 
 
 <p>
-<div class="alert alert-block alert-block alert-text-small">
+
+<p class="fragment">
+
+<div class="fragment alert alert-block alert-block alert-text-small">
 <b>Remark.</b>
-<p>
+
 It is reasonable that the fraction depends on \( \Delta t \)
 (twice as many infected in \( 2\Delta t \) as in \( \Delta t \)).
 \( \beta \) is some unknown parameter we must measure, supposed to not
 depend on \( \Delta t \), but maybe time \( t \).
+\( \beta \) lumps <em>a lot</em> of biological and sociological effects into
+one number.
 </div>
+
+
+</p>
 
 
 <p>
@@ -296,7 +308,7 @@ depend on \( \Delta t \), but maybe time \( t \).
 
 <h2>For practical calculations, we must express the S-I interaction with symbols  <a name="___sec4"></a></h2>
 
-Loss in \( S(t) \):
+Loss in \( S(t) \) from time \( t \) to \( t+\Delta t \):
 
 <p>&nbsp;<br>
 $$ S(t+\Delta t) = S(t) - \Delta t\,\beta S(t)I(t)$$
@@ -475,11 +487,14 @@ But this is getting boring! Let's ask a computer to do the work!
 
 <h2>First, some handy notation  <a name="___sec9"></a></h2>
 
-\( S^n = S(n\Delta t) \),
-\( I^n = I(n\Delta t) \), \( R^n = R(n\Delta t) \).
+<p>&nbsp;<br>
+$$ S^n = S(n\Delta t),\quad I^n = I(n\Delta t),\quad R^n = R(n\Delta t)\]
+\[ S^{n+1} = S((n+1)\Delta t),\quad I^{n+1} = I((n+1)\Delta t),\quad R^{n+1} = R((n+1)\Delta t)$$
+<p>&nbsp;<br>
+
 
 <p>
-The equations can now be written as
+The equations can now be written more compactly (and computer friendly):
 
 <p>&nbsp;<br>
 $$
@@ -532,14 +547,11 @@ R <span style="color: #666666">=</span> zeros(N<span style="color: #666666">+1</
 
 <h2>Here is the complete program  <a name="___sec11"></a></h2>
 
-Let time be measured in hours.
-
-<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "default" -->
 <div class="highlight" style="background: #f8f8f8"><pre style="font-size: 80%; font-size: 80%; line-height: 125%">beta <span style="color: #666666">=</span> <span style="color: #666666">0.0013</span>
 nu <span style="color: #666666">=0.8333</span>
-dt <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>             <span style="color: #408080; font-style: italic"># 6 min</span>
+dt <span style="color: #666666">=</span> <span style="color: #666666">0.1</span>             <span style="color: #408080; font-style: italic"># 6 min (time measured in hours)</span>
 D <span style="color: #666666">=</span> <span style="color: #666666">30</span>               <span style="color: #408080; font-style: italic"># simulate for D days</span>
 N <span style="color: #666666">=</span> <span style="color: #008000">int</span>(D<span style="color: #666666">*24/</span>dt)     <span style="color: #408080; font-style: italic"># corresponding no of hours</span>
 
@@ -759,11 +771,11 @@ to the S category. (\( 1/\gamma \) is the mean time for immunity.)
 <p>&nbsp;<br>
 $$
 \begin{align}
-S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \color{red}{\Delta t\,\gamma R^n}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + {\color{red}\Delta t\,\gamma R^n}
 \tag{7}\\ 
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
 \tag{8}\\ 
-R^{n+1} &= R^n + \Delta t\,\nu R^n - \color{red}{\Delta t\,\gamma R^n}
+R^{n+1} &= R^n + \Delta t\,\nu R^n - {\color{red}\Delta t\,\gamma R^n}
 \tag{9}
 \end{align}
 $$
@@ -782,7 +794,7 @@ No complications in the computational model!
 
 <h2>The effect of loss of immunity  <a name="___sec19"></a></h2>
 
-\( 1/\gamma = 50 \) days. \( \beta \) reduced by 2 and 4:
+\( 1/\gamma = 50 \) days. \( \beta \) reduced by 2 and 4 (left and right, resp.):
 
 <p>
 <center><p><img src="fig/SIR2.png" align="bottom" width=950></p></center>
@@ -811,9 +823,9 @@ vaccinated category, V. This does not affect the I and R categories.
 <p>&nbsp;<br>
 $$
 \begin{align}
-S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \Delta t\,\gamma R^n - \color{red}{p\Delta t S^n}
+S^{n+1} &= S^n - \Delta t\,\beta S^nI^n + \Delta t\,\gamma R^n - {\color{red}p\Delta t S^n}
 \tag{10}\\ 
-V^{n+1} &= V^n + \color{red}{p\Delta t S^n}
+V^{n+1} &= V^n + {\color{red}p\Delta t S^n}
 \tag{11}\\ 
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
 \tag{12}\\ 
@@ -837,7 +849,7 @@ Implementation: Just add array for \( V^n \) and add equation.
 
 <h2>Many possibilities for adjusting the model...  <a name="___sec21"></a></h2>
 
-The effect of vaccination decreases, so we may move people back to
+The effect of vaccination decreases over time, so we may move people back to
 the S category (term proportional to \( \Delta t V \)).
 
 <p>
@@ -893,13 +905,18 @@ Implementation: Let \( p^n \) be an array as \( V^n \). Set \( p^n=0.05 \) for
 
 <h2>Effect of vaccination campaign  <a name="___sec24"></a></h2>
 
-<center><p><img src="fig/SIRV2.png" align="bottom" width=800></p></center>
+<center><p><img src="fig/SIRV2.png" align="bottom" width=500></p></center>
 
 <p>
-Could now let the computer run a lot of cases and find the optimal
-vaccination period.
+Note:
 
+<ul>
+ <p><li> Mathematicians would be scared by the cusps on the curves...</li>
+ <p><li> Could now let the computer run a lot of cases and find the optimal
+   vaccination period</li>
+</ul>
 <p>
+
 
 </section>
 
@@ -1093,7 +1110,7 @@ take on different constant values in different time intervals.
 
 <p class="fragment">
 
-H. P. Langtangen and K.-A. Mardal and P. Røtnes:
+H. P. Langtangen, K.-A. Mardal and P. Røtnes:
 Escaping the Zombie Threat by Mathematics, in
 A. Whelan et al.: <em>Zombies in the Academy - Living Death in Higher Education</em>,
 University of Chicago Press, 2013
@@ -1130,7 +1147,7 @@ $$
 
 <p>
 Must experiment with values of \( a \) (strength), \( \sigma \) (duration is \( 6\sigma \)),
-point of attacks (\( T_i \))
+point of attacks (\( T_i \)) - with proper values humans beat the zombies!
 
 <p>
 
@@ -1290,7 +1307,7 @@ Reveal.initialize({
     // The "normal" size of the presentation, aspect ratio will be preserved
     // when the presentation is scaled to fit different resolutions. Can be
     // specified using percentage units.
-    width:  960,
+    width: 1170,  // original: 960,
     height: 700,
 
     // Factor of the display size that should remain empty around the content
