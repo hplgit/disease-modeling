@@ -17,9 +17,10 @@ V = zeros(N+1)
 I = zeros(N+1)
 R = zeros(N+1)
 
+# Vaccination campaign
 p = zeros(N+1)
-start_index = 6*24/0.1  # 6 days = 6*24 h, divide by 0.1 to get no of intervals
-stop_index = 15*24/0.1
+start_index = 6*24/dt  # 6 days = 6*24 h, divide by dt=0.1 to get no of intervals
+stop_index = 15*24/dt
 p[start_index:stop_index] = 0.005
 
 # Initial condition
