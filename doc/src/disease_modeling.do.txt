@@ -448,7 +448,7 @@ FIGURE: [fig/categories_SIRV_feedback, width=400 frac=0.5]
 
 FIGURE: [fig/SIRV1, width=800 frac=0.8]
 
-($p=0.005$)
+($p=0.0005$)
 
 
 !split
@@ -458,7 +458,7 @@ FIGURE: [fig/SIRV1, width=800 frac=0.8]
 
 !bt
 \begin{equation*} p(t) = \left\lbrace\begin{array}{ll}
-0.05,& 6\leq t\leq 15,\\
+0.005,& 6\leq t\leq 15,\\
 0,& \hbox{otherwise} \end{array}\right.\end{equation*}
 !et
 

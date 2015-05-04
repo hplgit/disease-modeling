@@ -2,7 +2,7 @@
 beta = 10./(40*8*24)
 nu = 3./(15*24)
 print 'beta:', beta, 'nu:', nu
-gamma = 1./(24*50)
+gamma = 1./(24*50)   # loss of immunity: 50 days
 
 beta /= 4
 dt = 0.1             # 6 min

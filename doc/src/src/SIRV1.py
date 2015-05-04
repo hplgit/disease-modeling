@@ -37,5 +37,5 @@ legend(['S', 'I', 'R', 'V'], loc='lower right')
 xlabel('hours')
 savefig('tmp.pdf'); savefig('tmp.png')
 
-print S[:4], I[:4], R[:4]
+#print S[:4], I[:4], R[:4]
 show()
