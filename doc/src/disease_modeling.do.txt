@@ -118,7 +118,7 @@ We must subtract this fraction in the balance equation for $I$:
 The loss $\Delta t\,\nu I$ is a gain in $R$:
 
 !bt
-\[ R(t+\Delta t) = R(t) + \Delta t\,\nu R(t)\]
+\[ R(t+\Delta t) = R(t) + \Delta t\,\nu I(t)\]
 !et
 
 
@@ -131,7 +131,7 @@ S(t+\Delta t) &= S(t) - \Delta t\,\beta S(t)I(t)
 label{SIR1:S}\\
 I(t+\Delta t) &= I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\nu I(t)
 label{SIR1:I}\\
-R(t+\Delta t) &= R(t) + \Delta t\,\nu R(t)
+R(t+\Delta t) &= R(t) + \Delta t\,\nu I(t)
 label{SIR1:R}
 \end{align}
 !et
@@ -149,13 +149,13 @@ Before we can compute with these, we must
 
  * Set $\Delta t=6$ minutes
  * Set $\beta =0.0013$, $\nu =0.8333$
- * Set $S(0)=50$, $I(1)$, $R(0)=0$
+ * Set $S(0)=50$, $I(0)=1$, $R(0)=0$
 
 !bt
 \begin{align*}
 S(\Delta t) &= S(0) - \Delta t\,\beta S(0)I(0)\approx 49.99\\
 I(\Delta t) &= I(0) + \Delta t\,\beta S(0)I(0) -\Delta t\,\nu I(0)\approx 1.002\\
-R(\Delta t) &= R(0) + \Delta t\,\nu R(0)\approx 0.0008333
+R(\Delta t) &= R(0) + \Delta t\,\nu I(0)\approx 0.0008333
 \end{align*}
 !et
 
@@ -172,7 +172,7 @@ R(\Delta t) &= R(0) + \Delta t\,\nu R(0)\approx 0.0008333
 \begin{align*}
 S(2\Delta t) &= S(\Delta t) - \Delta t\,\beta S(\Delta t)I(\Delta t)\approx 49.87\\
 I(2\Delta t) &= I(\Delta t) + \Delta t\,\beta S(\Delta t)I(\Delta t) -\Delta t\,\nu I(\Delta t)\approx 1.011\\
-R(2\Delta t) &= R(\Delta t) + \Delta t\,\nu R(\Delta t)\approx 0.00167
+R(2\Delta t) &= R(\Delta t) + \Delta t\,\nu I(\Delta t)\approx 0.00167
 \end{align*}
 !et
 
@@ -182,7 +182,7 @@ Repeat...
 \begin{align*}
 S(3\Delta t) &= S(2\Delta t) - \Delta t\,\beta S(2\Delta t)I(2\Delta t)\approx 49.98\\
 I(3\Delta t) &= I(2\Delta t) + \Delta t\,\beta S(2\Delta t)I(2\Delta t) -\Delta t\,\nu I(2\Delta t)\approx 1.017\\
-R(3\Delta t) &= R(2\Delta t) + \Delta t\,\nu R(2\Delta t)\approx 0.0025
+R(3\Delta t) &= R(2\Delta t) + \Delta t\,\nu I(2\Delta t)\approx 0.0025
 \end{align*}
 !et
 
@@ -211,7 +211,7 @@ S^{n+1} &= S^n - \Delta t\,\beta S^nI^n
 label{SIR1:Sc}\\
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
 label{SIR1:Ic}\\
-R^{n+1} &= R^n + \Delta t\,\nu R^n
+R^{n+1} &= R^n + \Delta t\,\nu I^n
 label{SIR1:Rc}
 \end{align}
 !et

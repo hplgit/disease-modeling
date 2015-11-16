@@ -11,8 +11,8 @@ Automatically generated HTML file from DocOnce source
 <title>Modeling the Spreading of Diseases</title>
 
 
-<link href="https://raw.githubusercontent.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
-<script src="https://rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
+<link href="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/css/solarized_light_code.css" rel="stylesheet" type="text/css" title="light"/>
+<script src="https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_styles/style_solarized_box/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 <link href="http://thomasf.github.io/solarized-css/solarized-light.min.css" rel="stylesheet">
@@ -20,6 +20,11 @@ Automatically generated HTML file from DocOnce source
 h1 {color: #b58900;}  /* yellow */
 /* h1 {color: #cb4b16;}  orange */
 /* h1 {color: #d33682;}  magenta, the original choice of thomasf */
+code { padding: 0px; background-color: inherit; }
+pre {
+  border: 0pt solid #93a1a1;
+  box-shadow: none;
+}
 .alert-text-small   { font-size: 80%;  }
 .alert-text-large   { font-size: 130%; }
 .alert-text-normal  { font-size: 90%;  }
@@ -42,10 +47,10 @@ h1 {color: #b58900;}  /* yellow */
 .alert-block > p, .alert-block > ul {margin-bottom:1em}
 .alert li {margin-top: 1em}
 .alert-block p+p {margin-top:5px}
-.alert-notice { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
-.alert-summary  { background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
-.alert-warning { background-image: url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
-.alert-question {background-image:url(https://raw.github.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
+.alert-notice { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_notice.png); }
+.alert-summary  { background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_summary.png); }
+.alert-warning { background-image: url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_warning.png); }
+.alert-question {background-image:url(https://cdn.rawgit.com/hplgit/doconce/master/bundled/html_images/small_yellow_question.png); }
 
 div { text-align: justify; text-justify: inter-word; }
 </style>
@@ -55,102 +60,102 @@ div { text-align: justify; text-justify: inter-word; }
 
 <!-- tocinfo
 {'highest level': 2,
- 'sections': [(u' We shall model a very complex phenomenon by simple math.... ',
+ 'sections': [(u'We shall model a very complex phenomenon by simple math....',
                2,
                None,
                '___sec0'),
-              (u' We keep track of 3 categories in the SIR model ',
+              (u'We keep track of 3 categories in the SIR model',
                2,
                None,
                '___sec1'),
-              (u' The traditional modeling approach is very mathematical - our idea is to model, program and experiment ',
+              (u'The traditional modeling approach is very mathematical - our idea is to model, program and experiment',
                2,
                None,
                '___sec2'),
-              (u' Dynamics in a time interval $\\Delta t$: $\\Delta t\\,\\beta SI$ people move from S to I ',
+              (u'Dynamics in a time interval $\\Delta t$: $\\Delta t\\,\\beta SI$ people move from S to I',
                2,
                None,
                '___sec3'),
-              (u' For practical calculations, we must express the S-I interaction with symbols ',
+              (u'For practical calculations, we must express the S-I interaction with symbols',
                2,
                None,
                '___sec4'),
-              (u' Modeling the interaction between R and I ',
+              (u'Modeling the interaction between R and I',
                2,
                None,
                '___sec5'),
-              (u' We have three equations for $S$, $I$, and $R$ ',
+              (u'We have three equations for $S$, $I$, and $R$',
                2,
                None,
                '___sec6'),
-              (u' The computation involves just simple arithmetics ',
+              (u'The computation involves just simple arithmetics',
                2,
                None,
                '___sec7'),
-              (u' And we can continue... ', 2, None, '___sec8'),
-              (u' First, some handy notation ', 2, None, '___sec9'),
-              (u' With variables, arrays, and a loop we can program ',
+              (u'And we can continue...', 2, None, '___sec8'),
+              (u'First, some handy notation', 2, None, '___sec9'),
+              (u'With variables, arrays, and a loop we can program',
                2,
                None,
                '___sec10'),
-              (u' Here is the complete program ', 2, None, '___sec11'),
-              (u' We have predicted a disease! ', 2, None, '___sec12'),
-              (u' How much math and programming did we use? ',
+              (u'Here is the complete program', 2, None, '___sec11'),
+              (u'We have predicted a disease!', 2, None, '___sec12'),
+              (u'How much math and programming did we use?',
                2,
                None,
                '___sec13'),
-              (u' Detour: The standard mathematical approach ',
+              (u'Detour: The standard mathematical approach',
                2,
                None,
                '___sec14'),
-              (u' A derivative arises as $\\Delta t\\rightarrow 0$ ',
+              (u'A derivative arises as $\\Delta t\\rightarrow 0$',
                2,
                None,
                '___sec15'),
-              (u' Bad news: we cannot solve these equations! ',
+              (u'Bad news: we cannot solve these equations!',
                2,
                None,
                '___sec16'),
-              (u' Parameter estimation is needed for predictive modeling ',
+              (u'Parameter estimation is needed for predictive modeling',
                2,
                None,
                '___sec17'),
-              (u' Let us extend the model: no life-long immunity ',
+              (u'Let us extend the model: no life-long immunity',
                2,
                None,
                '___sec18'),
-              (u' The effect of loss of immunity ', 2, None, '___sec19'),
-              (u' What is the effect of vaccination? ', 2, None, '___sec20'),
-              (u' Many possibilities for adjusting the model... ',
+              (u'The effect of loss of immunity', 2, None, '___sec19'),
+              (u'What is the effect of vaccination?', 2, None, '___sec20'),
+              (u'Many possibilities for adjusting the model...',
                2,
                None,
                '___sec21'),
-              (u' Effect of adding vaccination ', 2, None, '___sec22'),
-              (u' What is the effect of an intensive vaccination campaign? ',
+              (u'Effect of adding vaccination', 2, None, '___sec22'),
+              (u'What is the effect of an intensive vaccination campaign?',
                2,
                None,
                '___sec23'),
-              (u' Effect of vaccination campaign ', 2, None, '___sec24'),
-              (u' We can experiment with other campaigns ',
+              (u'Effect of vaccination campaign', 2, None, '___sec24'),
+              (u'We can experiment with other campaigns',
                2,
                None,
                '___sec25'),
-              (u' And now for something similar: zombification! ',
+              (u'And now for something similar: zombification!',
                2,
                None,
                '___sec26'),
-              (u' Zombie modeling is almost the same as SIR modeling ',
+              (u'Zombie modeling is almost the same as SIR modeling',
                2,
                None,
                '___sec27'),
-              (u' Dynamics of the zombie SIZR model ', 2, None, '___sec28'),
-              (u' The four equations in the SIZR model for zombification ',
+              (u'Dynamics of the zombie SIZR model', 2, None, '___sec28'),
+              (u'The four equations in the SIZR model for zombification',
                2,
                None,
                '___sec29'),
-              (u' Simulate a zombie movie! ', 2, None, '___sec30'),
-              (u' Effective war on zombies ', 2, None, '___sec31'),
-              (u' Summary ', 2, None, '___sec32')]}
+              (u'Simulate a zombie movie!', 2, None, '___sec30'),
+              (u'Effective war on zombies', 2, None, '___sec31'),
+              (u'Summary', 2, None, '___sec32')]}
 end of tocinfo -->
 
 <body>
@@ -186,22 +191,22 @@ MathJax.Hub.Config({
 <b>Hans Petter Langtangen</b> [1, 2]
 </center>
 
-
 <p>
 <!-- institution(s) -->
 
 <center>[1] <b>Center for Biomedical Computing, Simula Research Laboratory</b></center>
 <center>[2] <b>University of Oslo, Dept. of Informatics</b></center>
 <p>
-<center><h4>Sep 18, 2014</h4></center> <!-- date -->
+<center><h4>Nov 16, 2015</h4></center> <!-- date -->
 <p>
 <center><p><img src="fig/disease1.jpg" align="bottom" width=400></p></center>
 
 <p>
 <!-- !split -->
 
-<h2>We shall model a very complex phenomenon by simple math....  <a name="___sec0"></a></h2>
+<h2 id="___sec0">We shall model a very complex phenomenon by simple math.... </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Assumptions:</b>
 <p>
@@ -236,8 +241,9 @@ All these slides and associated programs are available from
 <p>
 <!-- !split -->
 
-<h2>We keep track of 3 categories in the SIR model  <a name="___sec1"></a></h2>
+<h2 id="___sec1">We keep track of 3 categories in the SIR model </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -272,8 +278,9 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \)
 <p>
 <!-- !split -->
 
-<h2>The traditional modeling approach is very mathematical - our idea is to model, program and experiment  <a name="___sec2"></a></h2>
+<h2 id="___sec2">The traditional modeling approach is very mathematical - our idea is to model, program and experiment </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b></b>
 <p>
@@ -292,8 +299,9 @@ Find and solve equations for \( S(t) \), \( I(t) \), \( R(t) \)
 <p>
 <!-- !split -->
 
-<h2>Dynamics in a time interval \( \Delta t \): \( \Delta t\,\beta SI \) people move from S to I  <a name="___sec3"></a></h2>
+<h2 id="___sec3">Dynamics in a time interval \( \Delta t \): \( \Delta t\,\beta SI \) people move from S to I </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>S-I interaction:</b>
 <p>
@@ -327,24 +335,24 @@ one number.
 <p>
 <!-- !split -->
 
-<h2>For practical calculations, we must express the S-I interaction with symbols  <a name="___sec4"></a></h2>
+<h2 id="___sec4">For practical calculations, we must express the S-I interaction with symbols </h2>
 
+<p>
 Loss in \( S(t) \) from time \( t \) to \( t+\Delta t \):
 
 $$ S(t+\Delta t) = S(t) - \Delta t\,\beta S(t)I(t)$$
-
 
 <p>
 Gain in \( I(t) \):
 
 $$ I(t+\Delta t) = I(t) + \Delta t\,\beta S(t)I(t)$$
 
-
 <p>
 <!-- !split -->
 
-<h2>Modeling the interaction between R and I  <a name="___sec5"></a></h2>
+<h2 id="___sec5">Modeling the interaction between R and I </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>R-I interaction:</b>
 <p>
@@ -363,17 +371,15 @@ We must subtract this fraction in the balance equation for \( I \):
 
 $$ I(t+\Delta t) = I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\,\nu I(t) $$
 
-
 <p>
 The loss \( \Delta t\,\nu I \) is a gain in \( R \):
 
-$$ R(t+\Delta t) = R(t) + \Delta t\,\nu R(t)$$
-
+$$ R(t+\Delta t) = R(t) + \Delta t\,\nu I(t)$$
 
 <p>
 <!-- !split -->
 
-<h2>We have three equations for \( S \), \( I \), and \( R \)  <a name="___sec6"></a></h2>
+<h2 id="___sec6">We have three equations for \( S \), \( I \), and \( R \) </h2>
 
 $$
 \begin{align}
@@ -381,11 +387,10 @@ S(t+\Delta t) &= S(t) - \Delta t\,\beta S(t)I(t)
 \label{SIR1:S}\\ 
 I(t+\Delta t) &= I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\nu I(t)
 \label{SIR1:I}\\ 
-R(t+\Delta t) &= R(t) + \Delta t\,\nu R(t)
+R(t+\Delta t) &= R(t) + \Delta t\,\nu I(t)
 \label{SIR1:R}
 \end{align}
 $$
-
 
 <p>
 <center><p><img src="fig/categories_SIR.png" align="bottom" width=400></p></center>
@@ -401,22 +406,21 @@ Before we can compute with these, we must
 
 <!-- !split -->
 
-<h2>The computation involves just simple arithmetics  <a name="___sec7"></a></h2>
+<h2 id="___sec7">The computation involves just simple arithmetics </h2>
 
 <ul>
  <li> Set \( \Delta t=6 \) minutes</li>
  <li> Set \( \beta =0.0013 \), \( \nu =0.8333 \)</li>
- <li> Set \( S(0)=50 \), \( I(1) \), \( R(0)=0 \)</li>
+ <li> Set \( S(0)=50 \), \( I(0)=1 \), \( R(0)=0 \)</li>
 </ul>
 
 $$
 \begin{align*}
 S(\Delta t) &= S(0) - \Delta t\,\beta S(0)I(0)\approx 49.99\\ 
 I(\Delta t) &= I(0) + \Delta t\,\beta S(0)I(0) -\Delta t\,\nu I(0)\approx 1.002\\ 
-R(\Delta t) &= R(0) + \Delta t\,\nu R(0)\approx 0.0008333
+R(\Delta t) &= R(0) + \Delta t\,\nu I(0)\approx 0.0008333
 \end{align*}
 $$
-
 
 <p>
 <!-- !bpop -->
@@ -432,16 +436,15 @@ $$
 <p>
 <!-- !split -->
 
-<h2>And we can continue...  <a name="___sec8"></a></h2>
+<h2 id="___sec8">And we can continue... </h2>
 
 $$
 \begin{align*}
 S(2\Delta t) &= S(\Delta t) - \Delta t\,\beta S(\Delta t)I(\Delta t)\approx 49.87\\ 
 I(2\Delta t) &= I(\Delta t) + \Delta t\,\beta S(\Delta t)I(\Delta t) -\Delta t\,\nu I(\Delta t)\approx 1.011\\ 
-R(2\Delta t) &= R(\Delta t) + \Delta t\,\nu R(\Delta t)\approx 0.00167
+R(2\Delta t) &= R(\Delta t) + \Delta t\,\nu I(\Delta t)\approx 0.00167
 \end{align*}
 $$
-
 
 <p>
 Repeat...
@@ -450,10 +453,9 @@ $$
 \begin{align*}
 S(3\Delta t) &= S(2\Delta t) - \Delta t\,\beta S(2\Delta t)I(2\Delta t)\approx 49.98\\ 
 I(3\Delta t) &= I(2\Delta t) + \Delta t\,\beta S(2\Delta t)I(2\Delta t) -\Delta t\,\nu I(2\Delta t)\approx 1.017\\ 
-R(3\Delta t) &= R(2\Delta t) + \Delta t\,\nu R(2\Delta t)\approx 0.0025
+R(3\Delta t) &= R(2\Delta t) + \Delta t\,\nu I(2\Delta t)\approx 0.0025
 \end{align*}
 $$
-
 
 <p>
 <!-- !bpop -->
@@ -463,11 +465,12 @@ But this is getting boring! Let's ask a computer to do the work!
 <p>
 <!-- !split -->
 
-<h2>First, some handy notation  <a name="___sec9"></a></h2>
+<h2 id="___sec9">First, some handy notation </h2>
 
-$$ S^n = S(n\Delta t),\quad I^n = I(n\Delta t),\quad R^n = R(n\Delta t)\]
-\[ S^{n+1} = S((n+1)\Delta t),\quad I^{n+1} = I((n+1)\Delta t),\quad R^{n+1} = R((n+1)\Delta t)$$
+$$ S^n = S(n\Delta t),\quad I^n = I(n\Delta t),\quad R^n = R(n\Delta t)$$
 
+
+$$ S^{n+1} = S((n+1)\Delta t),\quad I^{n+1} = I((n+1)\Delta t),\quad R^{n+1} = R((n+1)\Delta t)$$
 
 <p>
 The equations can now be written more compactly (and computer friendly):
@@ -478,17 +481,17 @@ S^{n+1} &= S^n - \Delta t\,\beta S^nI^n
 \label{SIR1:Sc}\\ 
 I^{n+1} &= I^n + \Delta t\,\beta S^nI^n -\Delta t\,\nu I^n
 \label{SIR1:Ic}\\ 
-R^{n+1} &= R^n + \Delta t\,\nu R^n
+R^{n+1} &= R^n + \Delta t\,\nu I^n
 \label{SIR1:Rc}
 \end{align}
 $$
 
-
 <p>
 <!-- !split -->
 
-<h2>With variables, arrays, and a loop we can program  <a name="___sec10"></a></h2>
+<h2 id="___sec10">With variables, arrays, and a loop we can program </h2>
 
+<p>
 Suppose we want to compute until \( t=N\Delta t \), i.e., for \( n=0,1,\ldots,N-1 \).
 We can store \( S^0, S^1, S^2, \ldots, S^N \) in an array (or list).
 
@@ -511,8 +514,9 @@ R = zeros(N+<span style="color: #B452CD">1</span>)
 <p>
 <!-- !split -->
 
-<h2>Here is the complete program  <a name="___sec11"></a></h2>
+<h2 id="___sec11">Here is the complete program </h2>
 
+<p>
 
 <!-- code=python (!bc pycod) typeset with pygments style "perldoc" -->
 <div class="highlight" style="background: #eeeedd"><pre style="line-height: 125%">beta = <span style="color: #B452CD">0.0013</span>
@@ -542,15 +546,17 @@ show()
 <p>
 <!-- !split -->
 
-<h2>We have predicted a disease!  <a name="___sec12"></a></h2>
+<h2 id="___sec12">We have predicted a disease! </h2>
 
+<p>
 <center><p><img src="fig/SIR1.png" align="bottom" width=800></p></center>
 
 <p>
 <!-- !split -->
 
-<h2>How much math and programming did we use?  <a name="___sec13"></a></h2>
+<h2 id="___sec13">How much math and programming did we use? </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Math:</b>
 <p>
@@ -581,8 +587,9 @@ show()
 <p>
 <!-- !split -->
 
-<h2>Detour: The standard mathematical approach  <a name="___sec14"></a></h2>
+<h2 id="___sec14">Detour: The standard mathematical approach </h2>
 
+<p>
 We had from intuition established
 
 $$
@@ -592,7 +599,6 @@ I(t+\Delta t) &= I(t) + \Delta t\,\beta S(t)I(t) -\Delta t\,\nu I(t)\\
 R(t+\Delta t) &= R(t) + \Delta t\,\nu R(t)
 \end{align*}
 $$
-
 
 <p>
 The mathematician will now make <em>differential equations</em>.
@@ -606,16 +612,15 @@ $$
 \end{align*}
 $$
 
-
 <p>
 <!-- !split -->
 
-<h2>A derivative arises as \( \Delta t\rightarrow 0 \)  <a name="___sec15"></a></h2>
+<h2 id="___sec15">A derivative arises as \( \Delta t\rightarrow 0 \) </h2>
 
+<p>
 In any calculus book, the derivative of \( S \) at \( t \) is defined as
 
 $$ S'(t) = \lim_{t\rightarrow 0}\frac{S(t+\Delta t) - S(t)}{\Delta t}$$
-
 
 <p>
 If we let \( \Delta t\rightarrow 0 \), we get derivatives on the left-hand side:
@@ -628,7 +633,6 @@ R'(t) &= \nu R(t)
 \end{align*}
 $$
 
-
 <p>
 This is a 3x3 system of differential equations for the functions
 \( S(t) \), \( I(t) \), \( R(t) \). For a unique solution, we need
@@ -637,8 +641,9 @@ This is a 3x3 system of differential equations for the functions
 <p>
 <!-- !split -->
 
-<h2>Bad news: we cannot solve these equations!  <a name="___sec16"></a></h2>
+<h2 id="___sec16">Bad news: we cannot solve these equations! </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Time to ask a numerical methods expert:</b>
 <p>
@@ -657,7 +662,7 @@ on a computer!
 <p>
 <!-- !split -->
 
-<h2>Parameter estimation is needed for predictive modeling  <a name="___sec17"></a></h2>
+<h2 id="___sec17">Parameter estimation is needed for predictive modeling </h2>
 
 <ul>
  <li> Any small \( \Delta t \) will do</li>
@@ -681,8 +686,9 @@ on a computer!
 <p>
 <!-- !split -->
 
-<h2>Let us extend the model: no life-long immunity  <a name="___sec18"></a></h2>
+<h2 id="___sec18">Let us extend the model: no life-long immunity </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Assumption.</b>
 <p>
@@ -706,15 +712,15 @@ R^{n+1} &= R^n + \Delta t\,\nu R^n - {\color{red}\Delta t\,\gamma R^n}
 \end{align}
 $$
 
-
 <p>
 No complications in the computational model!
 
 <p>
 <!-- !split -->
 
-<h2>The effect of loss of immunity  <a name="___sec19"></a></h2>
+<h2 id="___sec19">The effect of loss of immunity </h2>
 
+<p>
 \( 1/\gamma = 50 \) days. \( \beta \) reduced by 2 and 4 (left and right, resp.):
 
 <p>
@@ -723,8 +729,9 @@ No complications in the computational model!
 <p>
 <!-- !split -->
 
-<h2>What is the effect of vaccination?  <a name="___sec20"></a></h2>
+<h2 id="___sec20">What is the effect of vaccination? </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Assumptions.</b>
 <p>
@@ -750,7 +757,6 @@ R^{n+1} &= R^n + \Delta t\,\nu R^n - \Delta t\,\gamma R^n
 \end{align}
 $$
 
-
 <p>
 <!-- Too much for Beamer... -->
 Implementation: Just add array for \( V^n \) and add equation.
@@ -758,8 +764,9 @@ Implementation: Just add array for \( V^n \) and add equation.
 <p>
 <!-- !split -->
 
-<h2>Many possibilities for adjusting the model...  <a name="___sec21"></a></h2>
+<h2 id="___sec21">Many possibilities for adjusting the model... </h2>
 
+<p>
 The effect of vaccination decreases over time, so we may move people back to
 the S category (term proportional to \( \Delta t V \)).
 
@@ -769,26 +776,27 @@ the S category (term proportional to \( \Delta t V \)).
 <p>
 <!-- !split -->
 
-<h2>Effect of adding vaccination  <a name="___sec22"></a></h2>
+<h2 id="___sec22">Effect of adding vaccination </h2>
 
+<p>
 <center><p><img src="fig/SIRV1.png" align="bottom" width=800></p></center>
 
 <p>
-(\( p=0.005 \))
+(\( p=0.0005 \))
 
 <p>
 <!-- !split -->
 
-<h2>What is the effect of an intensive vaccination campaign?  <a name="___sec23"></a></h2>
+<h2 id="___sec23">What is the effect of an intensive vaccination campaign? </h2>
 
+<p>
 10 times more intense vaccination for 10 days, 6 days after outbreak:
 
 $$
 \begin{equation*} p(t) = \left\lbrace\begin{array}{ll}
-0.05,& 6\leq t\leq 15,\\ 
+0.005,& 6\leq t\leq 15,\\ 
 0,& \hbox{otherwise} \end{array}\right.\end{equation*}
 $$
-
 
 <p>
 Implementation: Let \( p^n \) be an array as \( V^n \). Set \( p^n=0.05 \) for
@@ -800,8 +808,9 @@ Implementation: Let \( p^n \) be an array as \( V^n \). Set \( p^n=0.05 \) for
 <p>
 <!-- !split -->
 
-<h2>Effect of vaccination campaign  <a name="___sec24"></a></h2>
+<h2 id="___sec24">Effect of vaccination campaign </h2>
 
+<p>
 <center><p><img src="fig/SIRV2.png" align="bottom" width=500></p></center>
 
 <p>
@@ -815,8 +824,9 @@ Note:
 
 <!-- !split -->
 
-<h2>We can experiment with other campaigns  <a name="___sec25"></a></h2>
+<h2 id="___sec25">We can experiment with other campaigns </h2>
 
+<p>
 <!-- !bslidecell 00 0.3 -->
 <center><p><img src="fig/disease2.jpg" align="bottom" width=400></p></center>
 <!-- !eslidecell -->
@@ -832,7 +842,6 @@ $$
 \end{equation*}
 $$
 
-
 <p>
 Very easy to implement. (Used to be complicated in differential
 equation models...)
@@ -841,8 +850,9 @@ equation models...)
 <p>
 <!-- !split -->
 
-<h2>And now for something similar: zombification!  <a name="___sec26"></a></h2>
+<h2 id="___sec26">And now for something similar: zombification! </h2>
 
+<p>
 <center><p><img src="fig/zombie1.jpg" align="bottom" width=900></p></center>
 
 <p>
@@ -851,8 +861,9 @@ equation models...)
 <p>
 <!-- !split -->
 
-<h2>Zombie modeling is almost the same as SIR modeling  <a name="___sec27"></a></h2>
+<h2 id="___sec27">Zombie modeling is almost the same as SIR modeling </h2>
 
+<p>
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Categories.</b>
 <p>
@@ -875,8 +886,9 @@ Zombie movie: <em>The Night of the Living Dead</em>, Geoerge A. Romero, 1968
 <p>
 <!-- !split -->
 
-<h2>Dynamics of the zombie SIZR model  <a name="___sec28"></a></h2>
+<h2 id="___sec28">Dynamics of the zombie SIZR model </h2>
 
+<p>
 <center><p><img src="fig/categories_SIZR.png" align="bottom" width=380></p></center>
 
 <p>
@@ -896,7 +908,7 @@ Zombie movie: <em>The Night of the Living Dead</em>, Geoerge A. Romero, 1968
 <p>
 <!-- !split -->
 
-<h2>The four equations in the SIZR model for zombification  <a name="___sec29"></a></h2>
+<h2 id="___sec29">The four equations in the SIZR model for zombification </h2>
 
 $$
 \begin{align*}
@@ -907,7 +919,6 @@ R^{n+1} &= R^n + \Delta t\,\delta_S S^n  + \Delta t\,\delta_I I^n +
 \Delta t\,\alpha S^nZ^n
 \end{align*}
 $$
-
 
 <p>
 <div class="alert alert-block alert-block alert-text-small">
@@ -928,8 +939,9 @@ $$
 <p>
 <!-- !split -->
 
-<h2>Simulate a zombie movie!  <a name="___sec30"></a></h2>
+<h2 id="___sec30">Simulate a zombie movie! </h2>
 
+<p>
 <!-- !bslidecell 00 0.6 -->
 <div class="alert alert-block alert-block alert-text-normal">
 <b>Three fundamental phases.</b>
@@ -966,8 +978,9 @@ University of Chicago Press, 2013
 <p>
 <!-- !split -->
 
-<h2>Effective war on zombies  <a name="___sec31"></a></h2>
+<h2 id="___sec31">Effective war on zombies </h2>
 
+<p>
 Introduce attacks on zombies at selected times \( T_0, T_1, \ldots, T_m \).
 
 <p>
@@ -981,7 +994,6 @@ Gaussian functions (peaks) in time:
 $$ \omega(t) = a\sum_{i=0}^m \exp{\left(-\frac{1}{2}\left({t - T_i\over\sigma}\right)\right)}
 $$
 
-
 <p>
 Must experiment with values of \( a \) (strength), \( \sigma \) (duration is \( 6\sigma \)),
 point of attacks (\( T_i \)) - with proper values humans beat the zombies!
@@ -989,7 +1001,7 @@ point of attacks (\( T_i \)) - with proper values humans beat the zombies!
 <p>
 <!-- !split -->
 
-<h2>Summary  <a name="___sec32"></a></h2>
+<h2 id="___sec32">Summary </h2>
 
 <ul>
  <li> A complex spreading of diseases can be modeled by intuitive, simple

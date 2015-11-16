@@ -1,7 +1,7 @@
 #!/bin/sh
 set -x
 
-function system {
+system (){
   "$@"
   if [ $? -ne 0 ]; then
     echo "make.sh: unsuccessful command $@"
